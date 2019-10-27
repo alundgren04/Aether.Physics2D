@@ -33,11 +33,11 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
     {
         public static TestEntry[] TestList =
         {
-            // New AetherX Tests
             new TestEntry {Name = "World Performance Test", CreateTest = WorldPerformanceTest.Create},
+            new TestEntry {Name = "Sparse bodies Test", CreateTest = SparseBodiesTest.Create},
+            new TestEntry {Name = "Sparse bodies with many fixtures Test", CreateTest = SparseBodiesWithManyFixturesTest.Create},
             new TestEntry {Name = "R.U.B.E. Loader Test", CreateTest = RubeLoaderTest.Create},
-            // TODO: new TestEntry {Name = "Rag Doll Test", CreateTest = RagDollTest.Create},
-            
+
             //Original tests
             new TestEntry {Name = "Tiles", CreateTest = TilesTest.Create},
             new TestEntry {Name = "Continuous Test", CreateTest = ContinuousTest.Create},
@@ -99,8 +99,6 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             new TestEntry {Name = "Body Pool", CreateTest = BodyPoolTest.Create},
             new TestEntry {Name = "Collision Test", CreateTest = CollisionTest.Create},
             new TestEntry {Name = "The Leaning Tower of Lire Test", CreateTest = TheLeaningTowerofLireTest.Create},
-            new TestEntry {Name = "Sparse bodies Test", CreateTest = SparseBodiesTest.Create},
-            new TestEntry {Name = "Sparse bodies with many fixtures Test", CreateTest = SparseBodiesWithManyFixturesTest.Create},
 
             //FPE tests
             new TestEntry {Name = "YuPeng Polygon", CreateTest = YuPengPolygonTest.Create},

@@ -94,22 +94,30 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Framework
                 AABB newActiveArea = new AABB(this.MouseWorldPosition, this.IndependentActiveAreaRadius * 2, this.IndependentActiveAreaRadius * 2);
                 this.DebugView.DrawAABB(ref newActiveArea, independentActiveAreaColor);
 
-                foreach (var activeArea in this.World.HibernationManager.ActiveAreas)
+                bool renderActiveAreaBodyCount = false; // NOTE: flip this to true to see the number of bodies currently within each active area for debug purposes.
+                if (renderActiveAreaBodyCount)
                 {
-                    // render number of bodies within each active area
-                    Vector2 position = new Vector2(activeArea.AABB.LowerBound.X, activeArea.AABB.UpperBound.Y);
-                    position = GameInstance.ConvertWorldToScreen(position);
-                    DebugView.DrawString((int)position.X, (int)position.Y - 5, "Contains " + activeArea.AreaBodies.Count().ToString());
+                    foreach (var activeArea in this.World.HibernationManager.ActiveAreas)
+                    {
+                        // render number of bodies within each active area
+                        Vector2 position = new Vector2(activeArea.AABB.LowerBound.X, activeArea.AABB.UpperBound.Y);
+                        position = GameInstance.ConvertWorldToScreen(position);
+                        DebugView.DrawString((int)position.X, (int)position.Y - 5, "Contains " + activeArea.AreaBodies.Count().ToString());
+                    }
                 }
 
                 this.DebugView.EndCustomDraw();
             }
 
-            foreach (var body in this.World.BodyList)
+            bool renderBodyIds = false; // NOTE: flip this to true to see body IDs for debug purposes.
+            if (renderBodyIds)
             {
-                // render body ID
-                var position = GameInstance.ConvertWorldToScreen(body.Position);
-                DebugView.DrawString((int)position.X - 5, (int)position.Y - 5, "Id "+body.Id.ToString());
+                foreach (var body in this.World.BodyList)
+                {
+                    // render body ID
+                    var position = GameInstance.ConvertWorldToScreen(body.Position);
+                    DebugView.DrawString((int)position.X - 5, (int)position.Y - 5, "Id " + body.Id.ToString());
+                }
             }
 
             DebugView.RenderDebugData(ref projection, ref view);
