@@ -2,6 +2,13 @@
 
 Box2D is the foundational physics engine, which was then ported to C# as Farseer and evolved independently. Farseer is now abandoned and lives on in Aether.Physics2D, which is still maintained as of Dec 2018. This is a fork of Aether.Physics2D which is enhanced to include further optimizations specifically for many-fixtured bodies in a huge, expansive world.
 
+# Getting Started
+
+1) Install MonoGame. (tested with v3.16: http://www.monogame.net/2017/03/01/monogame-3-6/)
+2) Pull down the "master" branch from this repo.
+3) Open the "Monogame Samples" solution (Samples.WINDOWS.MG.sln) in Visual Studio (tested with VS 2017)
+4) Set "Testbed.WINDOWS.MG" as the start-up project.
+5) Start the solution. 
 
 # Added Features
 
@@ -10,9 +17,17 @@ Box2D is the foundational physics engine, which was then ported to C# as Farseer
 * PR: https://github.com/alundgren04/AetherX/pull/4
 * Special thanks to Walt Destler (https://github.com/waltdestler)
 
-**Ability to load a R.U.B.E. (Really Useful Box2D Editor) world via JSON.**
+**Implemented "Hibernation" (optional setting)
+* No matter how performant the engine is, it will eventually slow as bodies are added. Hibernation is the solution to this. All bodies are offloaded to a shadow world which conducts no processing. You may add "Active Areas" around player within the world, and as they traverse the area, bodies will be brought back from hibernation and added to the world when the player approaches and then returned to hibernation if they are out of view. Seemingly simple, but surprisingly complex to get right. You can see the MASSIVE performance gains best with one of the first three test cases: "World Performance Test," "Sparse bodies test," or "Sparse bodies with many fixtures Test." Press tilde (~) to get advanced options. Press 'h' to toggle hibernation. The grey bodies are those which are hibernated. You may add an "Active Area" which will wake bodies by right clicking. Picture this "Active Area" being slightly larger than the player's view, so they would never be able to see anything beyond it. Move the "Active Area" around and observe the behavior while also watching the performance graph. Toggle hibernation to see the before and after. This is what will allow you to have enormous worlds. There are some limitations -- joints currently aren't supported. The logic needs to be extended to find any associated bodies and hibernate/unhibernate them in sync if both are out of view or one is in view. Not terribly complicated, just hasn't been done yet. 
+* NOTE: Hibernation is fully optional and can be disabled.
 
-**Additional test bed cases (WorldPerformanceTest) to benchmark performance of very large worlds.**
+**Added unique integer IDs to each body.
+
+**Detailed performance debugging and options. Press tilde (~) to see advanced options.
+
+**Added WorldPerformanceTest to benchmark performance of very large worlds.**
+
+**Ability to load a R.U.B.E. (Really Useful Box2D Editor) world via JSON.**
 
 
 # Existing Features
