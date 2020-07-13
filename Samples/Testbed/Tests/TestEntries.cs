@@ -33,6 +33,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
     {
         public static TestEntry[] TestList =
         {
+            new TestEntry {Name = "Planet Test", CreateTest = PlanetTest.Create},
             new TestEntry {Name = "World Performance Test", CreateTest = WorldPerformanceTest.Create},
             new TestEntry {Name = "Sparse bodies Test", CreateTest = SparseBodiesTest.Create},
             new TestEntry {Name = "Sparse bodies with many fixtures Test", CreateTest = SparseBodiesWithManyFixturesTest.Create},
