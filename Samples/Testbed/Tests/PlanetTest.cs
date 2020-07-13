@@ -19,29 +19,16 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 {
     public class PlanetTest : Test
     {
-        private float WorldSideSize { get; set; }
-        //private float WorldRadius { get { return this.WorldSideSize / 2f; } }
-        private BodyStructureType BodyStructureType = BodyStructureType.TwelveFixtureStructure;
-
-        // NOTE: This should always be greater than the biggest test body, otherwise things 
-        //       could overlap, which is a huge perf reduction.
-        //       Square this to get the square-meters-per-body.
-        private float MetersPerBody;
-
         private PlanetTest()
         {
-            // default to smallest world size
-            this.WorldSideSize = 2000; // 2km
 
-            // set margin per body
-            this.MetersPerBody = 50; // 50m
         }
 
 
 
         public override void Initialize()
         {
-            this.World = WorldPerformanceTestSetup.CreateWorld(this.WorldSideSize); //new World();
+            this.World = WorldPerformanceTestSetup.CreateWorld(2000); // 2km
                        
             // sets up debug drawing
             base.Initialize();

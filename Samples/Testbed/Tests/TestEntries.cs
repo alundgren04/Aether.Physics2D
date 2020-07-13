@@ -33,6 +33,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
     {
         public static TestEntry[] TestList =
         {
+            new TestEntry {Name = "Buoyancy test", CreateTest = BuoyancyTest.Create},
             new TestEntry {Name = "Planet Test", CreateTest = PlanetTest.Create},
             new TestEntry {Name = "World Performance Test", CreateTest = WorldPerformanceTest.Create},
             new TestEntry {Name = "Sparse bodies Test", CreateTest = SparseBodiesTest.Create},
@@ -117,7 +118,6 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             new TestEntry {Name = "Clone Test", CreateTest = CloneTest.Create},
             new TestEntry {Name = "Serialization Test", CreateTest = SerializationTest.Create},
             new TestEntry {Name = "Deletion test", CreateTest = DeletionTest.Create},
-            new TestEntry {Name = "Buoyancy test", CreateTest = BuoyancyTest.Create},
             new TestEntry {Name = "Convex hull test", CreateTest = ConvexHullTest2.Create},
             new TestEntry {Name = "Simple Wind Force Test", CreateTest = SimpleWindForceTest.Create},
             new TestEntry {Name = "Quad Tree BroadPhase test", CreateTest = QuadTreeTest.Create},
