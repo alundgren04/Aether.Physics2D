@@ -34,9 +34,9 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             // add an interest area ever X meters
             const int AAradius = 100;
             const int AAmargin = 250;
-            for( var x = -AAmargin; x < WorldSideSize - AAmargin; x += AAmargin)
+            for( var x = -WorldSideSize/2 + AAmargin; x < WorldSideSize/2 - AAmargin/2; x += AAmargin)
             {
-                for (var y = -AAmargin; y < WorldSideSize - AAmargin; y += AAmargin)
+                for (var y = -WorldSideSize / 2 + AAmargin; y < WorldSideSize / 2 - AAmargin/2; y += AAmargin)
                 {
                     // init and add
                     var activeArea = new IndependentActiveArea();
