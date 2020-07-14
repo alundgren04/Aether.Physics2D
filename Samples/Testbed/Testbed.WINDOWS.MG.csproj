@@ -51,6 +51,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\MultiActiveAreaPerfTest.cs" />
     <Compile Include="Tests\PlanetTest.cs" />
     <Compile Include="Tests\WorldPerformanceTest.cs" />
     <Compile Include="Tests\RubeLoaderTest.cs" />

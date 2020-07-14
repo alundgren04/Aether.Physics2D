@@ -32,7 +32,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
     public static class TestEntries
     {
         public static TestEntry[] TestList =
-        {
+        {   new TestEntry {Name = "Multi Active Area Performance Test", CreateTest = MultiActiveAreaPerfTest.Create},
             new TestEntry {Name = "Buoyancy test", CreateTest = BuoyancyTest.Create},
             new TestEntry {Name = "Planet Test", CreateTest = PlanetTest.Create},
             new TestEntry {Name = "World Performance Test", CreateTest = WorldPerformanceTest.Create},

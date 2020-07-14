@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using MoreLinq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -326,6 +327,14 @@ namespace tainicom.Aether.Physics2D.Dynamics.Hibernation
 
         private void HibernateBodies()
         {
+            // remove any duplicates
+            // NOTE: I saw a duplicate entry in this in one test. it could happen when a body leaves two AA at the same time... 
+            // seems like a real edge-case. That may reveal a deeper bug... how is it that a body is ordered to be removed by two diff AA?
+            // it seems this should go through all bodies... if in no AA, thne remove. 
+            // I see now... bodies are marked as being outide AAs... then each AA removes bodies not in their AA... if they're not in another AA.
+            // that could lead to dupes. But no harm, just remove the dupes here.
+            this.BodiesToHibernate = this.BodiesToHibernate.DistinctBy(body => body.Id).ToList();
+
             // hibernate all flagged bodies.
             foreach (var body in this.BodiesToHibernate)
             {

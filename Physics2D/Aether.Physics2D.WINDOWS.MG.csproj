@@ -185,6 +185,7 @@
     <Compile Include="Fluids\2\SpartialTable.cs" />
     <Compile Include="Loaders\RUBE\RubeLoader.cs" />
     <Compile Include="Loaders\RUBE\RubeModels.cs" />
+    <Compile Include="MoreLinq\MoreEnumerable.DistinctBy.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Utilities\WorldMouseTestUtility.cs" />
     <Compile Include="Utilities\IScreen.cs" />

@@ -48,6 +48,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Framework
         internal World World;
         internal int TextLine;
         WorldMouseTestUtility WorldMouseTestUtility;
+        private IndependentActiveArea MouseActiveArea = null;
 
         protected Test()
         {
@@ -192,18 +193,18 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Framework
                 if (state.RightButton == ButtonState.Pressed)
                 {
                     // get first independent active area
-                    var activeArea = this.World.HibernationManager.ActiveAreas.FirstOrDefault(aa => aa.AreaType == ActiveAreaType.Independent) as IndependentActiveArea;
+                    //var activeArea = this.World.HibernationManager.ActiveAreas.FirstOrDefault(aa => aa.AreaType == ActiveAreaType.Independent) as IndependentActiveArea;
 
-                    if (activeArea == null)
+                    if (this.MouseActiveArea == null)
                     {
                         // init and add
-                        activeArea = new IndependentActiveArea();
-                        activeArea.SetRadius(IndependentActiveAreaRadius);
-                        this.World.HibernationManager.ActiveAreas.Add(activeArea);
+                        this.MouseActiveArea = new IndependentActiveArea();
+                        this.MouseActiveArea.SetRadius(IndependentActiveAreaRadius);
+                        this.World.HibernationManager.ActiveAreas.Add(this.MouseActiveArea);
                     }
 
                     // set it to match current click position
-                    activeArea.SetPosition(this.MouseWorldPosition);
+                    this.MouseActiveArea.SetPosition(this.MouseWorldPosition);
                 } 
             }
 
