@@ -63,6 +63,8 @@ The below items are all inherited from the original repo at: https://github.com/
 **Collision Optimizations**
 * Only calculate and populate the fixture AABB tree for a given body if the body AABB is colliding. Otherwise, it shouldn't be needed at all. If the body AABB calculation has a dependency on the fixtureAABBs, then perhaps it calculates once and rotates as needed, or even uses a simple radius check.
 
+* When hibernation is enabled, only test body AABB overlaps for bodies which share an "Active Area." This should greatly reduce the scope of AABB overlap tests.
+
 * Only do collision tests for bodies which already have their body AABB collided or have had their bady AABB recalculated/moved. Otherwise, there should be no need. Moving bodies will test for collisions. Bodies which haven't moved don't need to test.
 
 * Tighten up the CircleShape AABB. Currently it's factoring in rotation in a way which seems wrong. Needs more investigation.
@@ -70,7 +72,5 @@ The below items are all inherited from the original repo at: https://github.com/
 * Tighten up the body AABBs, as they seem to have a margin beyond the fixture AABBs. I believe they should match the outer extents of the body's fixture AABBs with no additional margin/fattening.
 
 * If a body only has one fixture, then don't calc/store fixture AABBs and if the body AABB collides, count it as that single fixture colliding.
-
-* Offload bodies which haven't collided recently and which aren't near an "interest area" to a shadow World object, where they may be "hibernated"  until needed. More to come on this. Architecture draft: https://github.com/alundgren04/AetherX/wiki/Optimization:-Body-Hibernation
 
 * Rename the project to aid discoverability. Search combinations of "Aether" and "Physics" yields a massive amount of search results which are unrelated. Perhaps revert back to a name closer to a term users may be searching for, such as "Box2D" or "Farseer." Perhaps "Farseer 2" or "Sharp Box2D." 
