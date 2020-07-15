@@ -373,6 +373,8 @@ namespace tainicom.Aether.Physics2D.Collision
 
                 //TreeNode<T>* node = &_nodes[nodeId];
 
+                // This is where I could execute logic like "if ID isn't in list<int> then skip"
+
                 if (AABB.TestOverlap(ref _nodes[nodeId].AABB, ref aabb))
                 {
                     if (_nodes[nodeId].IsLeaf())

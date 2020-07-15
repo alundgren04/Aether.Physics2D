@@ -131,7 +131,7 @@ namespace tainicom.Aether.Physics2D.Common.PhysicsLogic
             int containedShapeCount = 0;
 
             // Query the world for overlapping shapes.
-            World.QueryAABB(
+            World.FindFixturesInAABB(
                 fixture =>
                 {
                     if (fixture.TestPoint(ref pos))

@@ -165,7 +165,7 @@ namespace tainicom.Aether.Physics2D.Samples.Demos
 
                 AABB aabb = new AABB(ref min, ref max);
 
-                World.QueryAABB(fixture =>
+                World.FindFixturesInAABB(fixture =>
                                     {
                                         Vector2 fv = fixture.Body.Position - cursorPos;
                                         fv.Normalize();

@@ -1674,13 +1674,17 @@ namespace tainicom.Aether.Physics2D.Dynamics
         /// <summary>
         /// Query the world for all fixtures that potentially overlap the provided AABB.
         /// 
+        /// Performance: This is slightly less perfomant than FindBodiesInAABB, so only call it if you 
+        ///              really need the specific fixtures, otherwise call FindBodiesInAABB to 
+        ///              the respective bodies.
+        /// 
         /// Inside the callback:
         /// Return true: Continues the query
         /// Return false: Terminate the query
         /// </summary>
         /// <param name="callback">A user implemented callback class.</param>
         /// <param name="aabb">The aabb query box.</param>
-        public void QueryAABB(Func<Fixture, bool> callback, ref AABB aabb)
+        public void FindFixturesInAABB(Func<Fixture, bool> callback, ref AABB aabb)
         {
             _queryAABBCallback.Value = callback;
             ContactManager.BroadPhase.Query(_queryAABBCallbackBroadPhaseWrapper, ref aabb, out _, null);
@@ -1697,7 +1701,7 @@ namespace tainicom.Aether.Physics2D.Dynamics
         {
             List<Fixture> affected = new List<Fixture>();
 
-            QueryAABB(fixture =>
+            FindFixturesInAABB(fixture =>
                 {
                     affected.Add(fixture);
                     return true;
@@ -1715,8 +1719,24 @@ namespace tainicom.Aether.Physics2D.Dynamics
         {
             var matches = new List<Body>();
 
-            ContactManager.BroadPhase.Query( 
-                ( bodyAabb, proxyId, userData) =>
+            // NOTE: the below re-uses the QueryAABB code, but seems to loop over fixtures, as 
+            //       it requires a check to remove duplicates. It should be less performant...
+            //this.QueryAABB(fixture =>
+            //{
+            //    Body body = fixture.Body;
+
+            //    // add to matches (ensure no dupes)
+            //    if (!matches.Contains(fixture.Body))
+            //        matches.Add(body);
+
+            //    // continue the search
+            //    return true;
+            //}, ref aabb);
+
+            // NOTE: the below doesn't require a check to remove duplicates... so it 
+            //       must loop over bodies and not fixtures... which should be more performant...
+            ContactManager.BroadPhase.Query(
+                (bodyAabb, proxyId, userData) =>
                 {
                     // get the body matching this proxy
                     BodyProxy proxy = ContactManager.BroadPhase.GetProxy(proxyId);
@@ -1825,7 +1845,7 @@ namespace tainicom.Aether.Physics2D.Dynamics
             _point1 = point;
 
             // Query the world for overlapping shapes.
-            QueryAABB(TestPointCallback, ref aabb);
+            FindFixturesInAABB(TestPointCallback, ref aabb);
 
             return _myFixture;
         }
@@ -1859,7 +1879,7 @@ namespace tainicom.Aether.Physics2D.Dynamics
             _testPointAllFixtures = new List<Fixture>();
 
             // Query the world for overlapping shapes.
-            QueryAABB(TestPointAllCallback, ref aabb);
+            FindFixturesInAABB(TestPointAllCallback, ref aabb);
 
             return _testPointAllFixtures;
         }

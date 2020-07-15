@@ -74,16 +74,16 @@ namespace tainicom.Aether.Physics2D.Controllers
         public override void Update(float dt)
         {
             _uniqueBodies.Clear();
-            World.QueryAABB(fixture =>
-                                {
-                                    if (fixture.Body.BodyType == BodyType.Static || !fixture.Body.Awake)
-                                        return true;
+            World.FindFixturesInAABB(fixture =>
+                {
+                    if (fixture.Body.BodyType == BodyType.Static || !fixture.Body.Awake)
+                        return true;
 
-                                    if (!_uniqueBodies.Contains(fixture.Body))
-                                        _uniqueBodies.Add(fixture.Body);
+                    if (!_uniqueBodies.Contains(fixture.Body))
+                        _uniqueBodies.Add(fixture.Body);
 
-                                    return true;
-                                }, ref _container);
+                    return true;
+                }, ref _container);
 
             foreach (Body body in _uniqueBodies)
             {

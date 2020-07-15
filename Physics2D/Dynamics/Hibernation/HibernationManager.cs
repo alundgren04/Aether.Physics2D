@@ -195,6 +195,9 @@ namespace tainicom.Aether.Physics2D.Dynamics.Hibernation
 
         private void UpdateActiveAreaBodyAABBs()
         {
+            // TODO: I think if a body is in more than one AA then this could trigger more than once per body. 
+            //       for performance, should probably just loop through all bodies in the active world and update their AABB. 
+            //       I think every body will be in at least one AA if hibernation is enabled...
             foreach( var aa in this.ActiveAreas )
             {
                 aa.UpdateAreaBodyAABBs();

@@ -442,7 +442,7 @@ namespace tainicom.Aether.Physics2D.Collision
         }
 
         /// <summary>
-        /// Test if the two AABBs overlap.
+        /// Test if the two AABBs overlap. Returns true if they are overlapping.
         /// </summary>
         /// <param name="a">The first AABB.</param>
         /// <param name="b">The second AABB.</param>
