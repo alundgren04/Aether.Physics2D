@@ -124,8 +124,17 @@ namespace tainicom.Aether.Physics2D.Dynamics
         private List<Joint> _jointAddList = new List<Joint>();
         private List<Joint> _jointRemoveList = new List<Joint>();
         private readonly ThreadLocal<Func<Fixture, bool>> _queryAABBCallback = new ThreadLocal<Func<Fixture, bool>>();
+
+        /// <summary>
+        /// For body collisions...
+        /// </summary>
         private Func<AABB, int, object, bool> _queryAABBCallbackBroadPhaseWrapper;
+
+        /// <summary>
+        /// For fixture collisions...
+        /// </summary>
         private Func<AABB, int, object, bool> _queryAABBCallbackFixturePhaseWrapper;
+
         private TOIInput _input = new TOIInput();
         private Fixture _myFixture;
         private Vector2 _point1;
@@ -234,11 +243,15 @@ namespace tainicom.Aether.Physics2D.Dynamics
         //    ContactManager = new ContactManager(new QuadTreeBroadPhase(span));
         //}
 
+        // Takes the test AABB and the body's proxyID which collided the test AABB and 
+        // then tests the body's fixtures to see which one collided, if any.
         private bool QueryAABBCallbackBroadPhaseWrapper(AABB aabb, int proxyId, object userData)
         {
+            // get the body which collided...
             BodyProxy proxy = ContactManager.BroadPhase.GetProxy(proxyId);
             Body body = proxy.Body;
 
+            // find if any fixture collided by refering to the body's own fixture tree...
             AABB.InvTransform(ref body._xf, ref aabb);
             body.FixtureTree.Query(_queryAABBCallbackFixturePhaseWrapper, ref aabb, out bool proceeded, body);
             return proceeded;
@@ -1735,6 +1748,11 @@ namespace tainicom.Aether.Physics2D.Dynamics
 
             // NOTE: the below doesn't require a check to remove duplicates... so it 
             //       must loop over bodies and not fixtures... which should be more performant...
+            //   EXPLANATION: this doesn't in turn check the body's fixture tree. It just returns the body
+            //       and skips the 2nd process to check the body's fixture tree.
+            // NOTE: There is a small concern that this isn't threadsafe. Other callbacks are wrapped 
+            //       in LocalThread<T> although it's very convoluted. Hopefully this won't cause x-thread
+            //       issues by having the callback anonymously inline rather than storing ref in LocalThread<T> property.
             ContactManager.BroadPhase.Query(
                 (bodyAabb, proxyId, userData) =>
                 {
