@@ -1697,10 +1697,39 @@ namespace tainicom.Aether.Physics2D.Dynamics
         /// </summary>
         /// <param name="callback">A user implemented callback class.</param>
         /// <param name="aabb">The aabb query box.</param>
-        public void FindFixturesInAABB(Func<Fixture, bool> callback, ref AABB aabb)
+        public void FindFixturesInAABB(Func<Fixture, bool> callback, ref AABB aabb)//, bool optimizeByActiveAreas = true)
         {
+            //if( !this.HibernationEnabled )
+            //{
+            //    // if hibernation is disabled, then disable any active-area scoping, even if caller enables it.
+            //    optimizeByActiveAreas = false;
+            //}
+
+            // assign callback
             _queryAABBCallback.Value = callback;
-            ContactManager.BroadPhase.Query(_queryAABBCallbackBroadPhaseWrapper, ref aabb, out _, null);
+
+            //if (optimizeByActiveAreas)
+            //{
+            //    // get active areas which overlap this aabb
+            //    var activeAreas = this.HibernationManager.FindActiveAreasInAABB(ref aabb);
+
+            //    // get all bodies in these active areas
+            //    var bodies = activeAreas.SelectMany(aa => aa.AreaBodies).Select(ab => ab.Body);
+
+            //    foreach (var body in bodies)
+            //    {
+            //        // find if any fixture collided by refering to the body's own fixture tree...
+            //        AABB.InvTransform(ref body._xf, ref aabb);
+            //        body.FixtureTree.Query(_queryAABBCallbackFixturePhaseWrapper, ref aabb, out bool proceeded, body);
+            //    }
+            //}
+            //else
+            //{
+                // use standard query
+                ContactManager.BroadPhase.Query(_queryAABBCallbackBroadPhaseWrapper, ref aabb, out _, null);
+            //}
+
+            // clear callback
             _queryAABBCallback.Value = null;
         }
 
@@ -1710,7 +1739,7 @@ namespace tainicom.Aether.Physics2D.Dynamics
         /// </summary>
         /// <param name="aabb">The aabb query box.</param>
         /// <returns>A list of fixtures that were in the affected area.</returns>
-        public List<Fixture> QueryAABB(ref AABB aabb)
+        public List<Fixture> FindFixturesInAABB(ref AABB aabb)
         {
             List<Fixture> affected = new List<Fixture>();
 

@@ -357,6 +357,7 @@ namespace tainicom.Aether.Physics2D.Collision
         /// </summary>
         /// <param name="callback">The callback.</param>
         /// <param name="aabb">The aabb.</param>
+        /// <param name="userData">Commonly a Body or Fixture.</param>
         public void Query(Func<AABB, int, object, bool> callback, ref AABB aabb, out bool proceeded, object userData)
         {
             Stack<int> queryStack = _queryStack.Value;
@@ -373,7 +374,10 @@ namespace tainicom.Aether.Physics2D.Collision
 
                 //TreeNode<T>* node = &_nodes[nodeId];
 
-                // This is where I could execute logic like "if ID isn't in list<int> then skip"
+                // TODO: This is where I could execute logic like "if ID isn't in list<int> then continue"
+                // how to make it abstract... pass in Group ability? hmm... pass in function?
+                // bruteforce... convert UserData to body, get ID... get activeareas connected to body (add ref from body to AA)... 
+                // get all bodies in all connected AAs... if current node ID (proxyID?)'s Body ID isn't in the list... then just skip.
 
                 if (AABB.TestOverlap(ref _nodes[nodeId].AABB, ref aabb))
                 {

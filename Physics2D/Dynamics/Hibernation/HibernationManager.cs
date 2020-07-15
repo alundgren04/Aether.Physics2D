@@ -625,18 +625,18 @@ namespace tainicom.Aether.Physics2D.Dynamics.Hibernation
             this.ActiveWorld.Add(hibernatedBody);
         }
 
-        //internal List<BaseActiveArea> FindActiveAreasInAABB(ref AABB aabb)
-        //{
-        //    var activeAreas = new List<BaseActiveArea>();
-        //    foreach( var activeArea in this.ActiveAreas )
-        //    {
-        //        if( AABB.TestOverlap( ref aabb, ref activeArea.AABB ))
-        //        {
-        //            activeAreas.Add(activeArea);
-        //        }
-        //    }
-        //    return activeAreas;
-        //}
+        internal List<BaseActiveArea> FindActiveAreasInAABB(ref AABB aabb)
+        {
+            var activeAreas = new List<BaseActiveArea>();
+            foreach (var activeArea in this.ActiveAreas)
+            {
+                if (AABB.TestOverlap(ref aabb, ref activeArea.AABB))
+                {
+                    activeAreas.Add(activeArea);
+                }
+            }
+            return activeAreas;
+        }
 
         //internal List<int> FindBodyIdsInAABB(ref AABB aabb)
         //{
