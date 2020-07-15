@@ -1725,6 +1725,8 @@ namespace tainicom.Aether.Physics2D.Dynamics
 
         /// <summary>
         /// Query the world for all bodies that potentially overlap the provided AABB.
+        /// 
+        /// Performance Note: This is more performant than checking exactly which fixture collided.
         /// </summary>
         /// <param name="aabb">The aabb query box.</param>
         /// <returns>A list of bodies that were in the affected area.</returns>
@@ -1732,24 +1734,9 @@ namespace tainicom.Aether.Physics2D.Dynamics
         {
             var matches = new List<Body>();
 
-            // NOTE: the below re-uses the QueryAABB code, but seems to loop over fixtures, as 
-            //       it requires a check to remove duplicates. It should be less performant...
-            //this.QueryAABB(fixture =>
-            //{
-            //    Body body = fixture.Body;
-
-            //    // add to matches (ensure no dupes)
-            //    if (!matches.Contains(fixture.Body))
-            //        matches.Add(body);
-
-            //    // continue the search
-            //    return true;
-            //}, ref aabb);
-
-            // NOTE: the below doesn't require a check to remove duplicates... so it 
-            //       must loop over bodies and not fixtures... which should be more performant...
-            //   EXPLANATION: this doesn't in turn check the body's fixture tree. It just returns the body
-            //       and skips the 2nd process to check the body's fixture tree.
+            // the below loops over bodies skips checking the body's fixture tree for precisely whcih
+            // fixtures overlapped. It just returns the body. it's more performant than checking for
+            // exactly which fixture was hit.
             // NOTE: There is a small concern that this isn't threadsafe. Other callbacks are wrapped 
             //       in LocalThread<T> although it's very convoluted. Hopefully this won't cause x-thread
             //       issues by having the callback anonymously inline rather than storing ref in LocalThread<T> property.
