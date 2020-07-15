@@ -57,14 +57,16 @@ The below items are all inherited from the original repo at: https://github.com/
 # Feature Roadmap / Proposals
 
 **Improved diagnostics**
+
 * Record the "ticks" at the time each AABB is tested for collision, so the DebugView may highlight their rendering accordingly. This will help ensure there is no unneccesary processing. For example, ensuring a fixture AABB isn't ever compared unless the body AABB has collided.
+
 * Any time AABB is recalculated, record "tick" time. In DebugView, highlight if it happened recently. Goal: low # highlights.
 
 **Collision Optimizations**
 
 * Simplify body AABB calculation for bodies without joints. Calculate the AABB once, then give it a bounding square so it can rotate freely without changing the shape of the box. This AABB will be larger than default AABB, but much more affordable to maintain. It also doesn't require fixture AABBs to be calculated to maintain the body AABB. If it collides, then calculate the actual fixture AABBs and body AABB and process collisions as usual.
 
-*Only calculate and populate the fixture AABB tree for a given body if the body AABB is colliding. Otherwise, it shouldn't be needed at all. If the body AABB calculation has a dependency on the fixtureAABBs, then perhaps it calculates once and rotates as needed, or even uses a simple radius check.
+* Only calculate and populate the fixture AABB tree for a given body if the body AABB is colliding. Otherwise, it shouldn't be needed at all. If the body AABB calculation has a dependency on the fixtureAABBs, then perhaps it calculates once and rotates as needed, or even uses a simple radius check.
 
 * When hibernation is enabled, only test body AABB overlaps for bodies which share an "Active Area." This should greatly reduce the scope of AABB overlap tests.
 
