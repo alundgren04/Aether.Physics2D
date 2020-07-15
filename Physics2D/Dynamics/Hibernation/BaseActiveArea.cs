@@ -17,11 +17,13 @@ namespace tainicom.Aether.Physics2D.Dynamics.Hibernation
         public ActiveAreaType AreaType { get; protected set; }
         public ObservableList<AreaBody> AreaBodies { get; private set; }
         public bool IsExpired { get; protected set; }
+        public HashSet<int> BodyIds { get; protected set; }
+
 
         public BaseActiveArea()
         {
             this.AreaBodies = new ObservableList<AreaBody>();
-
+            this.BodyIds = new HashSet<int>();
         }
         
         internal void UpdateAreaBodyAABBs()
@@ -47,6 +49,24 @@ namespace tainicom.Aether.Physics2D.Dynamics.Hibernation
             bodyAabb = new AABB(bodyAabb.Center, bodyAabb.Width + margin, bodyAabb.Height + margin);
 
             return bodyAabb;
+        }
+
+        public void AddBody ( Body body )
+        {
+            this.AreaBodies.Add(new AreaBody(body));
+            this.BodyIds.Add(body.Id);
+        }
+
+        public void RemoveBody(AreaBody areaBody)
+        {
+            this.AreaBodies.Remove(areaBody);
+            this.BodyIds.Remove(areaBody.Body.Id);
+        }
+
+        public void ClearBodies()
+        {
+            this.AreaBodies.Clear();
+            this.BodyIds.Clear();
         }
     }
 }

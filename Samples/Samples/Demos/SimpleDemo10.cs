@@ -151,8 +151,8 @@ namespace tainicom.Aether.Physics2D.Samples.Demos
             if (_cameraBlend > 0)
             {
                 Transform xf = _agent.Body.GetTransform();
-                var pos = xf.p;
-                var forward = xf.q.ToVector2();
+                var pos = xf.Position;
+                var forward = xf.Rotation.ToVector2();
                 var left = MathUtils.Rot90(ref forward);
                 var pos3D = new Vector3(pos, 0);
                 var forward3D = new Vector3(forward, 0);
@@ -186,7 +186,7 @@ namespace tainicom.Aether.Physics2D.Samples.Demos
             torque = 0;
 
             Transform xf = _userAgent.GetTransform();
-            var forward = xf.q.ToVector2();
+            var forward = xf.Rotation.ToVector2();
             var left = MathUtils.Rot90(ref forward);
 
 

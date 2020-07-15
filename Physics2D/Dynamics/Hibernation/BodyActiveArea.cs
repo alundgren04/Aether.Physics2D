@@ -31,9 +31,7 @@ namespace tainicom.Aether.Physics2D.Dynamics.Hibernation
             //this.TrackedBody = trackedBody;
 
             // automatically add it to the list of bodies as "totally in"
-            var areaBody = new AreaBody(body);
-            //areaBody.PositionStatus = AreaBodyStatus.TotallyIn;
-            this.AreaBodies.Add(areaBody);
+            this.AddBody(body);
 
             this.UpdateAABB();
                 

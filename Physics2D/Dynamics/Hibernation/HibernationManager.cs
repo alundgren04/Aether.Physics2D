@@ -15,7 +15,7 @@ namespace tainicom.Aether.Physics2D.Dynamics.Hibernation
         public World HibernatedWorld { get; private set; }
         public List<BaseActiveArea> ActiveAreas = new List<BaseActiveArea>();
         private List<Body> BodiesToHibernate = new List<Body>();
-
+        
         // TODO: only merge or spit every... 10th second?
 
         public HibernationManager(World activeWorld)
@@ -125,10 +125,10 @@ namespace tainicom.Aether.Physics2D.Dynamics.Hibernation
             {
                 if (!toBodies.Contains(fromBody))
                 {
-                    toActiveArea.AreaBodies.Add(new AreaBody(fromBody));
+                    toActiveArea.AddBody(fromBody);
                 }
             }
-            fromActiveArea.AreaBodies.Clear();
+            fromActiveArea.ClearBodies();
         }
 
         private void AdjustBodyAAsForBodiesInIndependentAreas()
@@ -231,14 +231,14 @@ namespace tainicom.Aether.Physics2D.Dynamics.Hibernation
                         if (!curBodyAABodies.Contains(touchingAABody.Body))
                         {
                             // this body isn't in the current body AA, so let's add it.
-                            curBodyAA.AreaBodies.Add(touchingAABody);
+                            curBodyAA.AddBody(touchingAABody.Body);
                         }
                     }
 
                     // ensure expiration time
                     //(curBodyAA as BodyActiveArea).EnsureExpirationNoLessThan(touchingAA as BodyActiveArea);
 
-                    touchingAA.AreaBodies.Clear();
+                    touchingAA.ClearBodies();
 
                     // remove them from the list of body AAs
                     bodyAAs.Remove(touchingAA);
@@ -488,7 +488,7 @@ namespace tainicom.Aether.Physics2D.Dynamics.Hibernation
                     if (!isAlreadyInActiveArea)
                     {
                         // didn't find it. add it.
-                        independentActiveArea.AreaBodies.Add(new AreaBody(body));
+                        independentActiveArea.AddBody(body);
                     }
                 }
             }
@@ -508,7 +508,7 @@ namespace tainicom.Aether.Physics2D.Dynamics.Hibernation
                     this.WakeBody(hibernatedBody);
 
                     // add it to this AA
-                    activeArea.AreaBodies.Add(new AreaBody(hibernatedBody));
+                    activeArea.AddBody(hibernatedBody);
                 }
             }
         }
@@ -579,7 +579,7 @@ namespace tainicom.Aether.Physics2D.Dynamics.Hibernation
         private void RemoveAreaBodyFromActiveArea(BaseActiveArea activeArea, AreaBody areaBody)
         {
             // remove it from this AA.
-            activeArea.AreaBodies.Remove(areaBody);
+            activeArea.RemoveBody(areaBody);
 
             // if it's not in any other AA at this point, hibernate it.
             var isActiveAreasContainingBody = this.ActiveAreas.Any(aa => 
@@ -624,5 +624,23 @@ namespace tainicom.Aether.Physics2D.Dynamics.Hibernation
             // add to active world
             this.ActiveWorld.Add(hibernatedBody);
         }
+
+        //internal List<BaseActiveArea> FindActiveAreasInAABB(ref AABB aabb)
+        //{
+        //    var activeAreas = new List<BaseActiveArea>();
+        //    foreach( var activeArea in this.ActiveAreas )
+        //    {
+        //        if( AABB.TestOverlap( ref aabb, ref activeArea.AABB ))
+        //        {
+        //            activeAreas.Add(activeArea);
+        //        }
+        //    }
+        //    return activeAreas;
+        //}
+
+        //internal List<int> FindBodyIdsInAABB(ref AABB aabb)
+        //{
+        //    return this.FindActiveAreasInAABB(ref aabb).SelectMany( aa => aa.AreaBodies).SelectMany( ab => ab.Body ).
+        //}
     }
 }
