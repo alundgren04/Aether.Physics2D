@@ -27,7 +27,7 @@
 * 3. This notice may not be removed or altered from any source distribution. 
 */
 
-using Microsoft.Xna.Framework;
+using tainicom.Aether.Physics2D.Common;
 using Microsoft.Xna.Framework.Input;
 using tainicom.Aether.Physics2D.Dynamics;
 using tainicom.Aether.Physics2D.Dynamics.Joints;
@@ -66,7 +66,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             joint.MotorEnabled = true;
         }
 
-        public override void Update(GameSettings settings, GameTime gameTime)
+        public override void Update(GameSettings settings, float elapsedSeconds)
         {
             base.Update(settings, gameTime);
 

@@ -31,7 +31,7 @@ using System;
 using System.Collections.Generic;
 using tainicom.Aether.Physics2D.Diagnostics;
 using tainicom.Aether.Physics2D.Common;
-using Microsoft.Xna.Framework;
+using tainicom.Aether.Physics2D.Common;
 using System.Threading;
 using tainicom.Aether.Physics2D.Dynamics;
 

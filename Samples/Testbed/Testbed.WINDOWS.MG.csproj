@@ -12,7 +12,7 @@
     <AssemblyName>Samples.Testbed</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MonoGamePlatform>Windows</MonoGamePlatform>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
@@ -218,13 +218,17 @@
       <Project>{83a440e3-9d82-48e6-b9ac-26d60d6cb639}</Project>
       <Name>Aether.Physics2D.Tests</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Helio.Physics.Compatibility.MonoGame\Helio.Physics.Compatibility.MonoGame.csproj">
+      <Project>{319F803F-6A45-455A-9BA9-83C57286A2AA}</Project>
+      <Name>Helio.Physics.Compatibility.MonoGame</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Physics2D.Diagnostics\Diagnostics\Aether.Physics2D.Diagnostics.WINDOWS.MG.csproj">
       <Project>{2ED9AD24-DFBA-441D-BCFB-EAA9520D804D}</Project>
       <Name>Aether.Physics2D.Diagnostics.WINDOWS.MG</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Physics2D\Aether.Physics2D.WINDOWS.MG.csproj">
+    <ProjectReference Include="..\..\Physics2D\Helio.Physics.csproj">
       <Project>{58A4F378-3FC5-4616-BC62-5FF5DF676627}</Project>
-      <Name>Aether.Physics2D.WINDOWS.MG</Name>
+      <Name>Helio.Physics</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

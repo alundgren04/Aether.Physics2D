@@ -8,9 +8,13 @@
 * Copyright (c) 2012 Ian Qvist
 */
 
-using Microsoft.Xna.Framework;
 using tainicom.Aether.Physics2D.Common;
 using tainicom.Aether.Physics2D.Dynamics;
+using Vector2 = tainicom.Aether.Physics2D.Common.Vector2;
+using Vector3 = tainicom.Aether.Physics2D.Common.Vector3;
+using Matrix = tainicom.Aether.Physics2D.Common.Matrix;
+using System.Drawing;
+//using Microsoft.Xna.Framework;
 
 namespace tainicom.Aether.Physics2D.Diagnostics
 {

@@ -31,7 +31,6 @@ using tainicom.Aether.Physics2D.Common;
 using tainicom.Aether.Physics2D.Dynamics;
 using tainicom.Aether.Physics2D.Dynamics.Joints;
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
@@ -243,7 +242,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             base.Keyboard(keyboardManager);
         }
 
-        public override void Update(GameSettings settings, GameTime gameTime)
+        public override void Update(GameSettings settings, Microsoft.Xna.Framework.float elapsedSeconds)
         {
             DrawString("Keys: left = a, brake = s, right = d, hz down = q, hz up = e");
 

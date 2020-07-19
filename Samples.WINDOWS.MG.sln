@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aether.Physics2D.Diagnostic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.WINDOWS.MG", "Samples\Samples\Samples.WINDOWS.MG.csproj", "{E4BBD53B-8677-4C90-9CA2-9B8FC186E8FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aether.Physics2D.WINDOWS.MG", "Physics2D\Aether.Physics2D.WINDOWS.MG.csproj", "{58A4F378-3FC5-4616-BC62-5FF5DF676627}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helio.Physics", "Physics2D\Helio.Physics.csproj", "{58A4F378-3FC5-4616-BC62-5FF5DF676627}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{95CC7850-C716-48DC-84EC-4735CDABF818}"
 EndProject
@@ -21,7 +21,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Physics2DImporters.WINDOWS.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld.WINDOWS.MG", "Samples\HelloWorld\HelloWorld.WINDOWS.MG.csproj", "{F2DDED87-5B5C-4E2C-A675-30D72DEF897E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aether.Physics2D.Tests", "Aether.Physics2D.Tests\Aether.Physics2D.Tests.csproj", "{83A440E3-9D82-48E6-B9AC-26D60D6CB639}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aether.Physics2D.Tests", "Aether.Physics2D.Tests\Aether.Physics2D.Tests.csproj", "{83A440E3-9D82-48E6-B9AC-26D60D6CB639}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helio.Physics.Compatibility.MonoGame", "Helio.Physics.Compatibility.MonoGame\Helio.Physics.Compatibility.MonoGame.csproj", "{319F803F-6A45-455A-9BA9-83C57286A2AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helio.Physics.Diagnostics", "Helio.Physics.Diagnostics\Helio.Physics.Diagnostics.csproj", "{DD95D2DA-B573-4931-9499-B564542F6A1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helio.Physics.Diagnostics.MonoGame", "Helio.Physics.Diagnostics.MonoGame\Helio.Physics.Diagnostics.MonoGame.csproj", "{E0155C34-3BB6-480E-AA4C-1C7DA0A05BCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helio.Common", "Helio.Common\Helio.Common.csproj", "{BCF03532-357A-446A-88D6-5FA6B2A4C73E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +65,22 @@ Global
 		{83A440E3-9D82-48E6-B9AC-26D60D6CB639}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83A440E3-9D82-48E6-B9AC-26D60D6CB639}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83A440E3-9D82-48E6-B9AC-26D60D6CB639}.Release|Any CPU.Build.0 = Release|Any CPU
+		{319F803F-6A45-455A-9BA9-83C57286A2AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{319F803F-6A45-455A-9BA9-83C57286A2AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{319F803F-6A45-455A-9BA9-83C57286A2AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{319F803F-6A45-455A-9BA9-83C57286A2AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD95D2DA-B573-4931-9499-B564542F6A1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD95D2DA-B573-4931-9499-B564542F6A1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD95D2DA-B573-4931-9499-B564542F6A1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD95D2DA-B573-4931-9499-B564542F6A1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0155C34-3BB6-480E-AA4C-1C7DA0A05BCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0155C34-3BB6-480E-AA4C-1C7DA0A05BCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0155C34-3BB6-480E-AA4C-1C7DA0A05BCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0155C34-3BB6-480E-AA4C-1C7DA0A05BCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCF03532-357A-446A-88D6-5FA6B2A4C73E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCF03532-357A-446A-88D6-5FA6B2A4C73E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCF03532-357A-446A-88D6-5FA6B2A4C73E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCF03532-357A-446A-88D6-5FA6B2A4C73E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

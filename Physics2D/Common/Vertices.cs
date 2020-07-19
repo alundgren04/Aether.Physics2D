@@ -13,7 +13,8 @@ using System.Collections.Generic;
 using tainicom.Aether.Physics2D.Diagnostics;
 using System.Text;
 using tainicom.Aether.Physics2D.Collision;
-using Microsoft.Xna.Framework;
+using tainicom.Aether.Physics2D.Common;
+using System.Linq;
 
 namespace tainicom.Aether.Physics2D.Common
 {
@@ -147,6 +148,12 @@ namespace tainicom.Aether.Physics2D.Common
         {
             float area = GetSignedArea();
             return (area < 0 ? -area : area);
+        }
+
+        public float GetRadius()
+        {
+            var centroid = this.GetCentroid();
+            return this.Max(v => (v - centroid).Length());
         }
 
         /// <summary>

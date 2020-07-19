@@ -6,7 +6,7 @@
 using tainicom.Aether.Physics2D.Dynamics;
 using tainicom.Aether.Physics2D.Dynamics.Contacts;
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
-using Microsoft.Xna.Framework;
+using tainicom.Aether.Physics2D.Common;
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 {
@@ -31,7 +31,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
                 other.Body.World.RemoveAsync(other.Body);
         }
 
-        public override void Update(GameSettings settings, GameTime gameTime)
+        public override void Update(GameSettings settings, float elapsedSeconds)
         {
             Body body = World.CreateCircle(0.4f, 1);
             body.Position = new Vector2(Rand.RandomFloat(-35, 35), 10);

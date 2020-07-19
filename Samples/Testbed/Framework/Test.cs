@@ -33,11 +33,20 @@ using tainicom.Aether.Physics2D.Diagnostics;
 using tainicom.Aether.Physics2D.Dynamics;
 using tainicom.Aether.Physics2D.Dynamics.Contacts;
 using tainicom.Aether.Physics2D.Dynamics.Joints;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
+using tainicom.Aether.Physics2D.Common;
 using tainicom.Aether.Physics2D.Dynamics.Hibernation;
 using System.Linq;
 using tainicom.Aether.Physics2D.Utilities;
+
+#region MonoGame Support. TO DO: Abstract this all away into Helio.Physics.Compatability.Monogame
+using Helio.Physics.Compatibility.MonoGame;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using GraphicsDeviceManager = Microsoft.Xna.Framework.GraphicsDeviceManager;
+using Game = Microsoft.Xna.Framework.Game;
+using PlayerIndex = Microsoft.Xna.Framework.PlayerIndex;
+using Color = Microsoft.Xna.Framework.Color;
+#endregion
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Framework
 {
@@ -84,7 +93,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Framework
             DebugView.DrawString(x, y, title);
         }
 
-        public virtual void DrawDebugView(GameTime gameTime, ref Matrix projection, ref Matrix view)
+        public virtual void DrawDebugView(float elapsedSeconds, ref Matrix projection, ref Matrix view)
         {
             if (this.World.HibernationEnabled)
             {
@@ -124,9 +133,9 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Framework
             DebugView.RenderDebugData(ref projection, ref view);
         }
 
-        public virtual void Update(GameSettings settings, GameTime gameTime)
+        public virtual void Update(GameSettings settings, float elapsedSeconds)
         {
-            float timeStep = Math.Min((float)gameTime.ElapsedGameTime.TotalSeconds, (1f / 30f));
+            float timeStep = Math.Min(elapsedSeconds, (1f / 30f));
 
             if (settings.Pause)
             {

@@ -25,7 +25,7 @@
 
 using System.Collections.Generic;
 using tainicom.Aether.Physics2D.Diagnostics;
-using Microsoft.Xna.Framework;
+using tainicom.Aether.Physics2D.Common;
 
 namespace tainicom.Aether.Physics2D.Common.PolygonManipulation
 {

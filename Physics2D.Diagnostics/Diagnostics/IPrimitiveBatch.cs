@@ -1,8 +1,9 @@
 ﻿// Copyright (c) 2017 Kastellanos Nikolaos
 
 using System;
-using Microsoft.Xna.Framework;
+using System.Drawing;
 using Microsoft.Xna.Framework.Graphics;
+using tainicom.Aether.Physics2D.Common;
 
 namespace tainicom.Aether.Physics2D.Diagnostics
 {

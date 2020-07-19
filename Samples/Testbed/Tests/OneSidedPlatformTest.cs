@@ -31,7 +31,7 @@ using tainicom.Aether.Physics2D.Common;
 using tainicom.Aether.Physics2D.Dynamics;
 using tainicom.Aether.Physics2D.Dynamics.Contacts;
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
-using Microsoft.Xna.Framework;
+using tainicom.Aether.Physics2D.Common;
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 {

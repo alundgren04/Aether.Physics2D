@@ -26,7 +26,7 @@
 */
 
 using System;
-using Microsoft.Xna.Framework;
+using tainicom.Aether.Physics2D.Common;
 using tainicom.Aether.Physics2D.Collision;
 using tainicom.Aether.Physics2D.Collision.Shapes;
 using tainicom.Aether.Physics2D.Common;
@@ -130,7 +130,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             body2.LinearVelocity = velocity2;
         }
 
-        public override void Update(GameSettings settings, GameTime gameTime)
+        public override void Update(GameSettings settings, float elapsedSeconds)
         {
             if (_break)
             {

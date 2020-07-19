@@ -39,7 +39,7 @@ using tainicom.Aether.Physics2D.Common.PhysicsLogic;
 using tainicom.Aether.Physics2D.Controllers;
 using tainicom.Aether.Physics2D.Dynamics.Contacts;
 using tainicom.Aether.Physics2D.Dynamics.Joints;
-using Microsoft.Xna.Framework;
+//using tainicom.Aether.Physics2D.Common;
 
 namespace tainicom.Aether.Physics2D.Dynamics
 {
@@ -1386,5 +1386,92 @@ namespace tainicom.Aether.Physics2D.Dynamics
 
             return body;
         }
+
+
+        #region Custom Code - AetherX
+
+        /// <summary>
+        /// Override which just uses the body's center as the bounding box center position.
+        /// </summary>
+        /// <param name="includeBodyRotation"></param>
+        /// <returns></returns>
+        public AABB GetBoundingBox()
+        {
+            //return this.GetBoundingBox(this.WorldCenter, includeBodyRotation);
+            var boundingBox = this.GetBoundingBoxAtOrigin();
+
+            // apply change to center position.
+            // NOTE: should this be "Position" instead of "WorldCenter"? "WorldCenter" is the center of mass...
+            var boxCenterPosition = this.WorldCenter - this.LocalCenter.Rotate(this.Rotation);
+            boundingBox.MoveCenter(boxCenterPosition);
+
+            return boundingBox;
+        }
+
+        public AABB GetBoundingBoxAtOrigin()
+        {
+            // TODO: could potentially cache the zero-origin unrotated body, at least until body changes.
+
+            AABB physicalObjectBoundingBox = new AABB();
+
+            foreach (var fixture in this.FixtureList)
+            {
+                // But the b2Fixture::GetAABB() method now requires a childIndex parameter. In reviewing the code, I don't see any comments about what this childIndex is, or what I should use if I'm in the process 
+                // of converting. I'm inclined to use 0 (zero), but I don't know if that's the right thing to do.
+                // Yeah every fixture has 1 to m child fixtures. For fixtures with a single child (circle, polygon, edge), the index is zero. For chain shapes, the index is 0 to m-1.
+                const int FixtureBoundingBoxIndex = 0;
+
+                // get the fixture bounding box.
+                AABB fixtureBoundingBox = new AABB();
+                fixture.GetAABB(out fixtureBoundingBox, FixtureBoundingBoxIndex);
+
+                // add this fixture's bounding box to the total
+                physicalObjectBoundingBox.Combine(ref fixtureBoundingBox);
+            }
+
+            return physicalObjectBoundingBox;
+        }
+
+        // NOTE: vertices, not an AABB -- it has to be able to rotate. AABB are always unrotated.
+        public Vertices GetBoundingRectVertices()
+        {
+            //return this.GetBoundingBox(this.WorldCenter, includeBodyRotation);
+            var boundingBox = this.GetBoundingBoxAtOrigin();
+
+            // NOTE: Can't just rotate the upper and lower corners. We need to get the vertices, and rotate them.
+            var rotatedVertices = new List<Vector2>();
+
+            for (var i = 0; i < boundingBox.Vertices.Count; i++)
+            {
+                // rotate
+                var newVertex = boundingBox.Vertices[i].Rotate(this.Rotation);
+
+                // add to list
+                rotatedVertices.Add(newVertex);
+            }
+
+            var vertices = new Vertices(rotatedVertices);
+
+            // move to world center
+            // NOTE: should this be "Position" instead of "WorldCenter"? "WorldCenter" is the center of mass...
+            var boxCenterPosition = this.WorldCenter - this.LocalCenter.Rotate(this.Rotation);
+            vertices.Translate(boxCenterPosition);
+
+            return vertices;
+        }
+
+        public Circle GetBoundingCircle()
+        {
+            // get bounding rect
+            Vertices rotatedBoundingBoxVertices = this.GetBoundingRectVertices();
+
+            // return bounding circle
+            return new Circle(
+                rotatedBoundingBoxVertices.GetCentroid(),
+                rotatedBoundingBoxVertices.GetRadius()
+                );
+        }
+
+        #endregion
     }
 }

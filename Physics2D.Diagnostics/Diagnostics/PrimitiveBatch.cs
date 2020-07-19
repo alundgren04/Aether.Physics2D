@@ -6,8 +6,11 @@
  */
 
 using System;
-using Microsoft.Xna.Framework;
+//using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using tainicom.Aether.Physics2D.Common;
+using Helio.Physics.Compatibility.MonoGame;
+using System.Drawing;
 
 namespace tainicom.Aether.Physics2D.Diagnostics
 {
@@ -68,7 +71,7 @@ namespace tainicom.Aether.Physics2D.Diagnostics
 
         public void SetProjection(ref Matrix projection)
         {
-            _basicEffect.Projection = projection;
+            _basicEffect.Projection = projection.ToMonoGame();
         }
 
         protected virtual void Dispose(bool disposing)
@@ -102,9 +105,9 @@ namespace tainicom.Aether.Physics2D.Diagnostics
 
             //tell our basic effect to begin.
             _basicEffect.Alpha = alpha;
-            _basicEffect.Projection = projection;
-            _basicEffect.View = view;
-            _basicEffect.World = world;
+            _basicEffect.Projection = projection.ToMonoGame();
+            _basicEffect.View = view.ToMonoGame();
+            _basicEffect.World = world.ToMonoGame();
             _basicEffect.CurrentTechnique.Passes[0].Apply();
 
             // flip the error checking boolean. It's now ok to call AddVertex, Flush,
@@ -133,16 +136,16 @@ namespace tainicom.Aether.Physics2D.Diagnostics
                     if (_triangleVertsCount >= _triangleVertices.Length)
                         FlushTriangles();
 
-                    _triangleVertices[_triangleVertsCount].Position = position;
-                    _triangleVertices[_triangleVertsCount].Color = color;
+                    _triangleVertices[_triangleVertsCount].Position = position.ToMonoGame();
+                    _triangleVertices[_triangleVertsCount].Color = color.ToMonoGame();
                     return _triangleVertsCount++;
 
                 case PrimitiveType.LineList:
                     if (_lineVertsCount >= _lineVertices.Length)
                         FlushLines();
 
-                    _lineVertices[_lineVertsCount].Position = position;
-                    _lineVertices[_lineVertsCount].Color = color;
+                    _lineVertices[_lineVertsCount].Position = position.ToMonoGame();
+                    _lineVertices[_lineVertsCount].Color = color.ToMonoGame();
                     return _lineVertsCount++;
 
                 default:
@@ -170,7 +173,7 @@ namespace tainicom.Aether.Physics2D.Diagnostics
                     _triangleVertices[_triangleVertsCount].Position.X = position.X;
                     _triangleVertices[_triangleVertsCount].Position.Y = position.Y;
                     _triangleVertices[_triangleVertsCount].Position.Z = DefaultTriangleListDepth;
-                    _triangleVertices[_triangleVertsCount].Color = color;
+                    _triangleVertices[_triangleVertsCount].Color = color.ToMonoGame();
                     return _triangleVertsCount++;
 
                 case PrimitiveType.LineList:
@@ -180,7 +183,7 @@ namespace tainicom.Aether.Physics2D.Diagnostics
                     _lineVertices[_lineVertsCount].Position.X = position.X;
                     _lineVertices[_lineVertsCount].Position.Y = position.Y;
                     _lineVertices[_lineVertsCount].Position.Z = DefaultLineListDepth;
-                    _lineVertices[_lineVertsCount].Color = color;
+                    _lineVertices[_lineVertsCount].Color = color.ToMonoGame();
                     return _lineVertsCount++;
 
                 default:

@@ -6,9 +6,9 @@
  * Microsoft Permissive License (Ms-PL) v1.1
  */
 
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
+//using Microsoft.Xna.Framework;
+//using Microsoft.Xna.Framework.Content;
+//using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -22,6 +22,20 @@ using tainicom.Aether.Physics2D.Dynamics;
 using tainicom.Aether.Physics2D.Dynamics.Contacts;
 using tainicom.Aether.Physics2D.Dynamics.Hibernation;
 using tainicom.Aether.Physics2D.Dynamics.Joints;
+//using Vector2 = tainicom.Aether.Physics2D.Common.Vector2;
+//using Vector3 = tainicom.Aether.Physics2D.Common.Vector3;
+//using Matrix = tainicom.Aether.Physics2D.Common.Matrix;
+//using MathHelper = tainicom.Aether.Physics2D.Common.MathHelper;
+//using SpriteBatch = Microsoft.Xna.Framework.Graphics.SpriteBatch;
+//using SpriteFont = Microsoft.Xna.Framework.Graphics.SpriteFont;
+//using GraphicsDevice = Microsoft.Xna.Framework.Graphics.GraphicsDevice;
+//using PrimitiveType = Microsoft.Xna.Framework.Graphics.PrimitiveType;
+using Color = System.Drawing.Color;  //Microsoft.Xna.Framework.Color;
+using Rectangle = Microsoft.Xna.Framework.Rectangle;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
+using Helio.Physics.Compatibility.MonoGame;
+using Helio.Common;
 
 namespace tainicom.Aether.Physics2D.Diagnostics
 {
@@ -44,17 +58,17 @@ namespace tainicom.Aether.Physics2D.Diagnostics
         private Matrix _localWorld;
 
         //Shapes
-        public Color DefaultShapeColor = new Color(0.9f, 0.7f, 0.7f);
-        public Color InactiveShapeColor = new Color(0.5f, 0.5f, 0.3f);
-        public Color KinematicShapeColor = new Color(0.5f, 0.5f, 0.9f);
-        public Color SleepingShapeColor = new Color(0.6f, 0.6f, 0.6f);
-        public Color StaticShapeColor = new Color(0.5f, 0.9f, 0.5f);
+        public Color DefaultShapeColor = ColorHelper.FromPercentages(0.9f, 0.7f, 0.7f);
+        public Color InactiveShapeColor = ColorHelper.FromPercentages(0.5f, 0.5f, 0.3f);
+        public Color KinematicShapeColor = ColorHelper.FromPercentages(0.5f, 0.5f, 0.9f);
+        public Color SleepingShapeColor = ColorHelper.FromPercentages(0.6f, 0.6f, 0.6f);
+        public Color StaticShapeColor = ColorHelper.FromPercentages(0.5f, 0.9f, 0.5f);
         public Color TextColor = Color.White;
         public Color PolygonVertexColor = Color.Red;
-        public Color BodyAabbColor = new Color(0.3f, 0.9f, 0.3f);
-        public Color HibernatedBodyAabbColor = new Color(0.25f, 0.25f, 0.25f);
-        public Color FixtureAabbColor = new Color(0.9f, 0.3f, 0.9f);
-        public Color JointSegmentColor = new Color(0.5f, 0.8f, 0.8f);
+        public Color BodyAabbColor = ColorHelper.FromPercentages(0.3f, 0.9f, 0.3f);
+        public Color HibernatedBodyAabbColor = ColorHelper.FromPercentages(0.25f, 0.25f, 0.25f);
+        public Color FixtureAabbColor = ColorHelper.FromPercentages(0.9f, 0.3f, 0.9f);
+        public Color JointSegmentColor = ColorHelper.FromPercentages(0.5f, 0.8f, 0.8f);
 
 
         //Contacts
@@ -186,15 +200,15 @@ namespace tainicom.Aether.Physics2D.Diagnostics
                     ContactPoint point = _points[i];
 
                     if (point.State == PointState.Add)
-                        DrawPoint(point.Position, 0.1f, new Color(0.3f, 0.95f, 0.3f));
+                        DrawPoint(point.Position, 0.1f, ColorHelper.FromPercentages(0.3f, 0.95f, 0.3f));
                     else if (point.State == PointState.Persist)
-                        DrawPoint(point.Position, 0.1f, new Color(0.3f, 0.3f, 0.95f));
+                        DrawPoint(point.Position, 0.1f, ColorHelper.FromPercentages(0.3f, 0.3f, 0.95f));
 
                     if ((Flags & DebugViewFlags.ContactNormals) == DebugViewFlags.ContactNormals)
                     {
                         Vector2 p1 = point.Position;
                         Vector2 p2 = p1 + axisScale * point.Normal;
-                        DrawSegment(p1, p2, new Color(0.4f, 0.9f, 0.4f));
+                        DrawSegment(p1, p2, ColorHelper.FromPercentages(0.4f, 0.9f, 0.4f));
                     }
                 }
 
@@ -316,8 +330,8 @@ namespace tainicom.Aether.Physics2D.Diagnostics
                 if (this.HasFlag(DebugViewFlags.ActiveAreas))
                 {
                     // render active areas
-                    Color independentActiveAreaColor = new Color(0.9f, 0.3f, 0.3f);
-                    Color bodyActiveAreaColor = new Color(0.8f, 0.4f, 0.3f);
+                    Color independentActiveAreaColor = ColorHelper.FromPercentages(0.9f, 0.3f, 0.3f);
+                    Color bodyActiveAreaColor = ColorHelper.FromPercentages(0.8f, 0.4f, 0.3f);
 
                     foreach (var activeArea in this.World.HibernationManager.ActiveAreas)
                     {
@@ -531,8 +545,8 @@ namespace tainicom.Aether.Physics2D.Diagnostics
                     DrawSegment(p2, s2, color);
                     break;
                 case JointType.FixedMouse:
-                    DrawPoint(p1, 0.5f, new Color(0.0f, 1.0f, 0.0f));
-                    DrawSegment(p1, p2, new Color(0.8f, 0.8f, 0.8f));
+                    DrawPoint(p1, 0.5f, ColorHelper.FromPercentages(0.0f, 1.0f, 0.0f));
+                    DrawSegment(p1, p2, ColorHelper.FromPercentages(0.8f, 0.8f, 0.8f));
                     break;
                 case JointType.Revolute:
                     DrawSegment(x1, p1, color);
@@ -661,7 +675,7 @@ namespace tainicom.Aether.Physics2D.Diagnostics
                 return;
             }
 
-            Color colorFill = color * (outline ? 0.5f : 1.0f);
+            Color colorFill = color.MultiplyBy(outline ? 0.5f : 1.0f);
 
             for (int i = 1; i < count - 1; i++)
             {
@@ -707,7 +721,7 @@ namespace tainicom.Aether.Physics2D.Diagnostics
             var center_v2 = center + v2;
             var center_vS = center_v2;
 
-            Color colorFill = color * 0.5f;
+            Color colorFill = color.MultiplyBy(0.5f);
 
             for (int i = 0; i < CircleSegments-1; i++)
             {
@@ -911,9 +925,9 @@ namespace tainicom.Aether.Physics2D.Diagnostics
             for (int i = 0; i < _stringData.Count; i++)
             {
                 if (_stringData[i].Text != null)
-                    _batch.DrawString(_font, _stringData[i].Text, _stringData[i].Position, _stringData[i].Color);
+                    _batch.DrawString(_font, _stringData[i].Text, _stringData[i].Position.ToMonoGame(), _stringData[i].Color.ToMonoGame());
                 else
-                    _batch.DrawString(_font, _stringData[i].stringBuilderText, _stringData[i].Position, _stringData[i].Color);
+                    _batch.DrawString(_font, _stringData[i].stringBuilderText, _stringData[i].Position.ToMonoGame(), _stringData[i].Color.ToMonoGame());
             }
 
             // end the sprite batch effect

@@ -6,7 +6,7 @@
 using tainicom.Aether.Physics2D.Collision;
 using tainicom.Aether.Physics2D.Common;
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
-using Microsoft.Xna.Framework;
+using tainicom.Aether.Physics2D.Common;
 using Microsoft.Xna.Framework.Input;
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
@@ -29,7 +29,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             base.Mouse(state, oldState);
         }
 
-        public override void Update(GameSettings settings, GameTime gameTime)
+        public override void Update(GameSettings settings, float elapsedSeconds)
         {
             DrawString("Use the mouse to create a polygon.");
             DrawString("Simple: " + _vertices.IsSimple());

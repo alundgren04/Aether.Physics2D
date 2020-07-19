@@ -29,7 +29,7 @@ using tainicom.Aether.Physics2D.Collision.Shapes;
 using tainicom.Aether.Physics2D.Controllers;
 using tainicom.Aether.Physics2D.Dynamics;
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
-using Microsoft.Xna.Framework;
+using tainicom.Aether.Physics2D.Common;
 using tainicom.Aether.Physics2D.Common.PhysicsLogic;
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests

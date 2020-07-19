@@ -30,7 +30,7 @@ using tainicom.Aether.Physics2D.Common;
 using tainicom.Aether.Physics2D.Dynamics;
 using tainicom.Aether.Physics2D.Dynamics.Joints;
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
-using Microsoft.Xna.Framework;
+using tainicom.Aether.Physics2D.Common;
 using Microsoft.Xna.Framework.Input;
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
@@ -204,7 +204,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             World.Add(rjd);
         }
 
-        public override void Update(GameSettings settings, GameTime gameTime)
+        public override void Update(GameSettings settings, float elapsedSeconds)
         {
             DrawString("Keys: left = a, brake = s, right = d, toggle motor = m");
 

@@ -1,7 +1,7 @@
 ﻿
 
 using Aether.Physics2D.Tests;
-using Microsoft.Xna.Framework;
+using tainicom.Aether.Physics2D.Common;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
@@ -62,7 +62,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
         private bool IsControlPanelRenderEnabled { get; set; }
 
-        public override void Update(GameSettings settings, GameTime gameTime)
+        public override void Update(GameSettings settings, float elapsedSeconds)
         {
             base.Update(settings, gameTime);
 
@@ -126,7 +126,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             base.Mouse(state, oldState);
         }
 
-        public override void DrawDebugView(GameTime gameTime, ref Matrix projection, ref Matrix view)
+        public override void DrawDebugView(float elapsedSeconds, ref Matrix projection, ref Matrix view)
         {
             base.DrawDebugView(gameTime, ref projection, ref view);
 

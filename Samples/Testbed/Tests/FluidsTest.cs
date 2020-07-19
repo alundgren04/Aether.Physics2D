@@ -12,7 +12,7 @@ using System;
 using tainicom.Aether.Physics2D.Dynamics;
 using tainicom.Aether.Physics2D.Fluids;
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
-using Microsoft.Xna.Framework;
+using tainicom.Aether.Physics2D.Common;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -46,7 +46,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             _pixel = GameInstance.Content.Load<Texture2D>("Pixel");
         }
 
-        public override void Update(GameSettings settings, GameTime gameTime)
+        public override void Update(GameSettings settings, float elapsedSeconds)
         {
             _spriteBatch.Begin();
 

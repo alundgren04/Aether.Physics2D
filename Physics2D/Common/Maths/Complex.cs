@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2017 Kastellanos Nikolaos
 
 using System;
-using Microsoft.Xna.Framework;
+using tainicom.Aether.Physics2D.Common;
 
 namespace tainicom.Aether.Physics2D.Common.Maths
 {

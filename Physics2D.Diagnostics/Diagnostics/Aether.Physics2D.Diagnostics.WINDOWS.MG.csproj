@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -12,8 +12,9 @@
     <AssemblyName>Aether.Physics2D.Diagnostics</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MonoGamePlatform>Windows</MonoGamePlatform>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -61,6 +62,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="..\DiagnosticsContent\DiagnosticsContent.mgcb">
@@ -68,9 +70,17 @@
     </MonoGameContentReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Physics2D\Aether.Physics2D.WINDOWS.MG.csproj">
+    <ProjectReference Include="..\..\Helio.Common\Helio.Common.csproj">
+      <Project>{BCF03532-357A-446A-88D6-5FA6B2A4C73E}</Project>
+      <Name>Helio.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Helio.Physics.Compatibility.MonoGame\Helio.Physics.Compatibility.MonoGame.csproj">
+      <Project>{319f803f-6a45-455a-9ba9-83c57286a2aa}</Project>
+      <Name>Helio.Physics.Compatibility.MonoGame</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Physics2D\Helio.Physics.csproj">
       <Project>{58A4F378-3FC5-4616-BC62-5FF5DF676627}</Project>
-      <Name>Aether.Physics2D.WINDOWS.MG</Name>
+      <Name>Helio.Physics</Name>
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>

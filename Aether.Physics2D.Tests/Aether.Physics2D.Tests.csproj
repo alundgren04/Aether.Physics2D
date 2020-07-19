@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard1.6</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Physics2D.Diagnostics\Diagnostics\Aether.Physics2D.Diagnostics.WINDOWS.MG.csproj" />
-    <ProjectReference Include="..\Physics2D\Aether.Physics2D.WINDOWS.MG.csproj" />
+    <ProjectReference Include="..\Physics2D\Helio.Physics.csproj" />
   </ItemGroup>
 
   <ItemGroup>

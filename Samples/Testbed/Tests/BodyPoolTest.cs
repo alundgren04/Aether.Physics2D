@@ -5,7 +5,7 @@
  * Microsoft Permissive License (Ms-PL) v1.1
  */
 
-using Microsoft.Xna.Framework;
+using tainicom.Aether.Physics2D.Common;
 using System.Collections.Generic;
 using tainicom.Aether.Physics2D.Dynamics;
 using tainicom.Aether.Physics2D.Dynamics.Contacts;
@@ -39,7 +39,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             }
         }
 
-        public override void Update(GameSettings settings, GameTime gameTime)
+        public override void Update(GameSettings settings, float elapsedSeconds)
         {
             Body body;
 

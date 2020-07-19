@@ -3,7 +3,7 @@
  * Microsoft Permissive License (Ms-PL) v1.1
  */
 
-using Microsoft.Xna.Framework;
+using tainicom.Aether.Physics2D.Common;
 using tainicom.Aether.Physics2D.Collision;
 using tainicom.Aether.Physics2D.Collision.Shapes;
 using tainicom.Aether.Physics2D.Common;
@@ -87,7 +87,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
         }
 
-        public override void Update(GameSettings settings, GameTime gameTime)
+        public override void Update(GameSettings settings, float elapsedSeconds)
         {
             GameInstance.ViewCenter = Vector2.Zero;
 

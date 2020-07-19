@@ -5,7 +5,7 @@
 
 using System;
 using tainicom.Aether.Physics2D.Collision;
-using Microsoft.Xna.Framework;
+using tainicom.Aether.Physics2D.Common;
 
 namespace tainicom.Aether.Physics2D.Common
 {

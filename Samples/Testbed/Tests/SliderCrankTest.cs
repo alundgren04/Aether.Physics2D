@@ -30,7 +30,7 @@ using tainicom.Aether.Physics2D.Common;
 using tainicom.Aether.Physics2D.Dynamics;
 using tainicom.Aether.Physics2D.Dynamics.Joints;
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
-using Microsoft.Xna.Framework;
+using tainicom.Aether.Physics2D.Common;
 using Microsoft.Xna.Framework.Input;
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
@@ -145,7 +145,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             base.Keyboard(keyboardManager);
         }
 
-        public override void Update(GameSettings settings, GameTime gameTime)
+        public override void Update(GameSettings settings, float elapsedSeconds)
         {
             base.Update(settings, gameTime);
             DrawString("Keys: (f) toggle friction, (m) toggle motor");

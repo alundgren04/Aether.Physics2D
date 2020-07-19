@@ -11,7 +11,7 @@
 using System.Collections.Generic;
 using tainicom.Aether.Physics2D.Diagnostics;
 using tainicom.Aether.Physics2D.Common.Decomposition.Seidel;
-using Microsoft.Xna.Framework;
+using tainicom.Aether.Physics2D.Common;
 using Point = tainicom.Aether.Physics2D.Common.Decomposition.Seidel.Point;
 
 namespace tainicom.Aether.Physics2D.Common.Decomposition

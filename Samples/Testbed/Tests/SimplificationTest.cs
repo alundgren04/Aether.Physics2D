@@ -7,7 +7,10 @@ using System.Diagnostics;
 using tainicom.Aether.Physics2D.Common;
 using tainicom.Aether.Physics2D.Common.PolygonManipulation;
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
-using Microsoft.Xna.Framework;
+using tainicom.Aether.Physics2D.Common;
+using Vector2 = tainicom.Aether.Physics2D.Common.Vector2;
+using Vector3 = tainicom.Aether.Physics2D.Common.Vector3;
+using Matrix = tainicom.Aether.Physics2D.Common.Matrix;
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 {
@@ -115,7 +118,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             _lowerRight = SimplifyTools.DouglasPeuckerSimplify(_lowerRight, 0.5f);
         }
 
-        public override void Update(GameSettings settings, GameTime gameTime)
+        public override void Update(GameSettings settings, float elapsedSeconds)
         {
             DrawString(string.Format("Center ({0}): Original polygon", _twoShape.Count));
             

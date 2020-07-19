@@ -29,8 +29,12 @@ using tainicom.Aether.Physics2D.Common;
 using tainicom.Aether.Physics2D.Dynamics;
 using tainicom.Aether.Physics2D.Dynamics.Joints;
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
-using Microsoft.Xna.Framework;
+using tainicom.Aether.Physics2D.Common;
 using Microsoft.Xna.Framework.Input;
+
+#region MonoGame Support. TO DO: Abstract this all away into Helio.Physics.Compatability.Monogame
+using GameTime = Microsoft.Xna.Framework.GameTime;
+#endregion
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 {
@@ -101,7 +105,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             base.Keyboard(keyboardManager);
         }
 
-        public override void Update(GameSettings settings, GameTime gameTime)
+        public override void Update(GameSettings settings, float elapsedSeconds)
         {
             // Drive the kinematic body.
             //if (_platform.BodyType == BodyType.Kinematic)

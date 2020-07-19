@@ -1,0 +1,2 @@
+C:\Users\alund\Documents\GitHub\AetherX\Helio.Physics.MonoGame\obj\Debug\Helio.Physics.MonoGame.csprojAssemblyReference.cache
+C:\Users\alund\Documents\GitHub\AetherX\Helio.Physics.MonoGame\obj\Debug\Helio.Physics.MonoGame.csproj.CoreCompileInputs.cache

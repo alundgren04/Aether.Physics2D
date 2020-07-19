@@ -1,0 +1,5 @@
+C:\Users\alund\Documents\GitHub\AetherX\Helio.Physics.Diagnostics.MonoGame\bin\Debug\Helio.Physics.Diagnostics.MonoGame.dll
+C:\Users\alund\Documents\GitHub\AetherX\Helio.Physics.Diagnostics.MonoGame\bin\Debug\Helio.Physics.Diagnostics.MonoGame.pdb
+C:\Users\alund\Documents\GitHub\AetherX\Helio.Physics.Diagnostics.MonoGame\obj\Debug\Helio.Physics.Diagnostics.MonoGame.csproj.CoreCompileInputs.cache
+C:\Users\alund\Documents\GitHub\AetherX\Helio.Physics.Diagnostics.MonoGame\obj\Debug\Helio.Physics.Diagnostics.MonoGame.dll
+C:\Users\alund\Documents\GitHub\AetherX\Helio.Physics.Diagnostics.MonoGame\obj\Debug\Helio.Physics.Diagnostics.MonoGame.pdb

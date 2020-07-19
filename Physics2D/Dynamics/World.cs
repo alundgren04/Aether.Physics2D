@@ -39,7 +39,7 @@ using System;
 using System.Collections.Generic;
 using tainicom.Aether.Physics2D.Diagnostics;
 using System.Threading;
-using Microsoft.Xna.Framework;
+using tainicom.Aether.Physics2D.Common;
 using tainicom.Aether.Physics2D.Collision;
 using tainicom.Aether.Physics2D.Common;
 using tainicom.Aether.Physics2D.Controllers;

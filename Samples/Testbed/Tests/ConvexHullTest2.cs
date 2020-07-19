@@ -6,7 +6,7 @@
 using tainicom.Aether.Physics2D.Common;
 using tainicom.Aether.Physics2D.Common.ConvexHull;
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
-using Microsoft.Xna.Framework;
+using tainicom.Aether.Physics2D.Common;
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 {
@@ -49,7 +49,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             _chainHull = ChainHull.GetConvexHull(_pointCloud3);
         }
 
-        public override void Update(GameSettings settings, GameTime gameTime)
+        public override void Update(GameSettings settings, float elapsedSeconds)
         {
             DrawString("Melkman: Red");
             DrawString("Giftwrap: Green");

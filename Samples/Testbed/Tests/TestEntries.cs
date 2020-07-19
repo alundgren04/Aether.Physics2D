@@ -32,10 +32,14 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
     public static class TestEntries
     {
         public static TestEntry[] TestList =
-        {   new TestEntry {Name = "Multi Active Area Performance Test", CreateTest = MultiActiveAreaPerfTest.Create},
-            new TestEntry {Name = "Buoyancy test", CreateTest = BuoyancyTest.Create},
+        {
+                        new TestEntry {Name = "Gravity Controller Test", CreateTest = GravityControllerTest.Create},
             new TestEntry {Name = "Planet Test", CreateTest = PlanetTest.Create},
             new TestEntry {Name = "World Performance Test", CreateTest = WorldPerformanceTest.Create},
+            new TestEntry {Name = "Multi Active Area Performance Test", CreateTest = MultiActiveAreaPerfTest.Create},
+            new TestEntry {Name = "Buoyancy test", CreateTest = BuoyancyTest.Create},
+
+            
             new TestEntry {Name = "Sparse bodies Test", CreateTest = SparseBodiesTest.Create},
             new TestEntry {Name = "Sparse bodies with many fixtures Test", CreateTest = SparseBodiesWithManyFixturesTest.Create},
             new TestEntry {Name = "R.U.B.E. Loader Test", CreateTest = RubeLoaderTest.Create},
@@ -106,7 +110,6 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             new TestEntry {Name = "YuPeng Polygon", CreateTest = YuPengPolygonTest.Create},
             new TestEntry {Name = "Path Test", CreateTest = PathTest.Create},
             new TestEntry {Name = "Cutting of polygons", CreateTest = CuttingTest.Create},
-            new TestEntry {Name = "Gravity Controller Test", CreateTest = GravityControllerTest.Create},
             new TestEntry {Name = "Texture to Vertices", CreateTest = TextureVerticesTest.Create},
             new TestEntry {Name = "BreakableBody test", CreateTest = BreakableBodyTest.Create},
             new TestEntry {Name = "Rounded rectangle", CreateTest = RoundedRectangle.Create},

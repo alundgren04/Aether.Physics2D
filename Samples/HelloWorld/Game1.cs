@@ -9,6 +9,8 @@ using tainicom.Aether.Physics2D.Dynamics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Helio.Physics.Compatibility.MonoGame;
+using Vector2 = tainicom.Aether.Physics2D.Common.Vector2;
 
 namespace tainicom.Aether.Physics2D.Samples
 {
@@ -145,7 +147,7 @@ namespace tainicom.Aether.Physics2D.Samples
                 if (padState.Buttons.A == ButtonState.Pressed && _oldPadState.Buttons.A == ButtonState.Released)
                     _playerBody.ApplyLinearImpulse(new Vector2(0, -10));
 
-                _playerBody.ApplyForce(padState.ThumbSticks.Left);
+                _playerBody.ApplyForce(padState.ThumbSticks.Left.ToCommon());
                 _cameraPosition.X -= padState.ThumbSticks.Right.X;
                 _cameraPosition.Y += padState.ThumbSticks.Right.Y;
 
@@ -207,14 +209,14 @@ namespace tainicom.Aether.Physics2D.Samples
             // Draw player and ground. 
             // Our View/Projection requires RasterizerState.CullClockwise and SpriteEffects.FlipVertically.
             _spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, RasterizerState.CullClockwise, _spriteBatchEffect);
-            _spriteBatch.Draw(_playerTexture, _playerBody.Position, null, Color.White, _playerBody.Rotation, _playerTextureOrigin, new Vector2(_playerBodyRadius * 2f) / _playerTextureSize, SpriteEffects.FlipVertically, 0f);
-            _spriteBatch.Draw(_groundTexture, _groundBody.Position, null, Color.White, _groundBody.Rotation, _groundTextureOrigin, _groundBodySize / _groundTextureSize, SpriteEffects.FlipVertically, 0f);
+            _spriteBatch.Draw(_playerTexture, _playerBody.Position.ToMonoGame(), null, Color.White, _playerBody.Rotation, _playerTextureOrigin.ToMonoGame(), new Vector2(_playerBodyRadius * 2f).ToMonoGame() / _playerTextureSize.ToMonoGame(), SpriteEffects.FlipVertically, 0f);
+            _spriteBatch.Draw(_groundTexture, _groundBody.Position.ToMonoGame(), null, Color.White, _groundBody.Rotation, _groundTextureOrigin.ToMonoGame(), _groundBodySize.ToMonoGame() / _groundTextureSize.ToMonoGame(), SpriteEffects.FlipVertically, 0f);
             _spriteBatch.End();
 
             // Display instructions
             _spriteBatch.Begin();
-            _spriteBatch.DrawString(_font, Text, new Vector2(14f, 14f), Color.Black);
-            _spriteBatch.DrawString(_font, Text, new Vector2(12f, 12f), Color.White);
+            _spriteBatch.DrawString(_font, Text, new Vector2(14f, 14f).ToMonoGame(), Color.Black);
+            _spriteBatch.DrawString(_font, Text, new Vector2(12f, 12f).ToMonoGame(), Color.White);
             _spriteBatch.End();
 
             base.Draw(gameTime);

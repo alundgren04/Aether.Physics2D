@@ -30,10 +30,21 @@ using tainicom.Aether.Physics2D.Common;
 using tainicom.Aether.Physics2D.Diagnostics;
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
 using tainicom.Aether.Physics2D.Samples.Testbed.Tests;
-using Microsoft.Xna.Framework;
+using tainicom.Aether.Physics2D.Utilities;
+
+
+#region MonoGame Support. TO DO: Abstract this all away into Helio.Physics.Compatability.Monogame
+using Helio.Physics.Compatibility.MonoGame;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using tainicom.Aether.Physics2D.Utilities;
+using GraphicsDeviceManager = Microsoft.Xna.Framework.GraphicsDeviceManager;
+using Game = Microsoft.Xna.Framework.Game;
+using PlayerIndex = Microsoft.Xna.Framework.PlayerIndex;
+using GameTime = Microsoft.Xna.Framework.GameTime;
+using Color = Microsoft.Xna.Framework.Color;
+#endregion
+
+
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed
 {
@@ -161,7 +172,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed
         /// checking for collisions, gathering input, and playing audio.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Update(GameTime gameTime)
+        protected override void Update(float elapsedSeconds)
         {
             // update the update FPS
             this.UpdateFrequency.Update();
@@ -257,7 +268,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed
             if (_test != null && newGamePad.IsConnected)
                 _test.Gamepad(newGamePad, _oldGamePad);
 
-            base.Update(gameTime);
+            base.Update(elapsedSeconds);
 
             _keyboardManager._oldKeyboardState = _keyboardManager._newKeyboardState;
             _oldMouseState = newMouseState;
@@ -266,7 +277,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed
             if (_test != null)
             {
                 _test.TextLine = 30;
-                _test.Update(_settings, gameTime);
+                _test.Update(_settings, elapsedSeconds);
             }
 
             _test.DebugView.UpdatePerformanceGraph(_test.World.UpdateTime);
@@ -286,10 +297,21 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed
         private FrequencyTracker UpdateFrequency = new FrequencyTracker();
 
         /// <summary>
+        /// TODO: abstract this and remove MG specificicity.
+        /// </summary>
+        /// <param name="gameTime"></param>
+        protected override void Draw(GameTime gameTime)
+        {
+            this.Draw((float)gameTime.ElapsedGameTime.TotalSeconds);
+
+            base.Draw(gameTime);
+        }
+
+        /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Draw(GameTime gameTime)
+        protected void Draw(float elapsedSeconds)
         {
             // mark the end of the previous loop and start the next
             this.PerformanceTree.End();
@@ -323,9 +345,9 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed
                 ResetCamera();
             }
 
-            _test.DrawDebugView(gameTime, ref Projection, ref View);
+            _test.DrawDebugView(gameTime, ref Projection.ToCommon(), ref View.ToCommon());
 
-            base.Draw(gameTime);
+            //base.Draw(gameTime);
 
             this.PerformanceTree.EndRegion();
         }
@@ -352,13 +374,13 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed
 
         public Vector2 ConvertWorldToScreen(Vector2 position)
         {
-            Vector3 temp = GraphicsDevice.Viewport.Project(new Vector3(position, 0), Projection, View, Matrix.Identity);
+            Vector3 temp = GraphicsDevice.Viewport.Project(new Vector3(position, 0).ToMonoGame(), Projection.ToMonoGame(), View.ToMonoGame(), Matrix.Identity.ToMonoGame());
             return new Vector2(temp.X, temp.Y);
         }
 
         public Vector2 ConvertScreenToWorld(int x, int y)
         {
-            Vector3 temp = GraphicsDevice.Viewport.Unproject(new Vector3(x, y, 0), Projection, View, Matrix.Identity);
+            Vector3 temp = GraphicsDevice.Viewport.Unproject(new Vector3(x, y, 0).ToMonoGame(), Projection.ToMonoGame(), View.ToMonoGame(), Matrix.Identity.ToMonoGame());
             return new Vector2(temp.X, temp.Y);
         }
 

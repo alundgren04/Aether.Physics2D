@@ -29,7 +29,7 @@ using System;
 using System.Diagnostics;
 using tainicom.Aether.Physics2D.Collision;
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
-using Microsoft.Xna.Framework;
+using tainicom.Aether.Physics2D.Common;
 using Microsoft.Xna.Framework.Input;
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
@@ -78,7 +78,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             _automated = false;
         }
 
-        public override void Update(GameSettings settings, GameTime gameTime)
+        public override void Update(GameSettings settings, float elapsedSeconds)
         {
             _rayActor = null;
             for (int i = 0; i < ActorCount; ++i)
