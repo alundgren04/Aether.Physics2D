@@ -116,7 +116,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             
             DrawString("Revolutions: " + _circleFixture.Body.Revolutions);
 
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
         }
 
         internal static Test Create()

@@ -163,7 +163,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
             DrawString(_collision ? "OnCollision fired" : "OnSeparation fired");
 
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
         }
 
         public static Test Create()

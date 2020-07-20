@@ -122,7 +122,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
         public override void Update(GameSettings settings, float elapsedSeconds)
         {
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
 
             DrawString("(C) CCD: " + Settings.ContinuousPhysics);
             DrawString("(W) wall.IsBullet: " + wall.IsBullet);

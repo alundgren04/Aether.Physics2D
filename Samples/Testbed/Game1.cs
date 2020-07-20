@@ -40,11 +40,8 @@ using Microsoft.Xna.Framework.Input;
 using GraphicsDeviceManager = Microsoft.Xna.Framework.GraphicsDeviceManager;
 using Game = Microsoft.Xna.Framework.Game;
 using PlayerIndex = Microsoft.Xna.Framework.PlayerIndex;
-using GameTime = Microsoft.Xna.Framework.GameTime;
-using Color = Microsoft.Xna.Framework.Color;
+using System.Drawing;
 #endregion
-
-
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed
 {
@@ -167,12 +164,19 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed
             _oldGamePad = GamePad.GetState(PlayerIndex.One);
         }
 
+        protected override void Update(Microsoft.Xna.Framework.GameTime gameTime)
+        {
+            this.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
+
+            base.Update(gameTime);
+        }
+
         /// <summary>
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Update(float elapsedSeconds)
+        protected void Update(float elapsedSeconds)
         {
             // update the update FPS
             this.UpdateFrequency.Update();
@@ -181,7 +185,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed
             this.PerformanceTree.StartRegion("Update");
 
             // clear graphics here because some tests already draw during update
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(Color.Black.ToMonoGame());
 
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
@@ -268,8 +272,6 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed
             if (_test != null && newGamePad.IsConnected)
                 _test.Gamepad(newGamePad, _oldGamePad);
 
-            base.Update(elapsedSeconds);
-
             _keyboardManager._oldKeyboardState = _keyboardManager._newKeyboardState;
             _oldMouseState = newMouseState;
             _oldGamePad = newGamePad;
@@ -300,7 +302,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed
         /// TODO: abstract this and remove MG specificicity.
         /// </summary>
         /// <param name="gameTime"></param>
-        protected override void Draw(GameTime gameTime)
+        protected override void Draw(Microsoft.Xna.Framework.GameTime gameTime)
         {
             this.Draw((float)gameTime.ElapsedGameTime.TotalSeconds);
 
@@ -345,7 +347,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed
                 ResetCamera();
             }
 
-            _test.DrawDebugView(gameTime, ref Projection.ToCommon(), ref View.ToCommon());
+            _test.DrawDebugView(elapsedSeconds, ref Projection, ref View);
 
             //base.Draw(gameTime);
 
@@ -374,13 +376,23 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed
 
         public Vector2 ConvertWorldToScreen(Vector2 position)
         {
-            Vector3 temp = GraphicsDevice.Viewport.Project(new Vector3(position, 0).ToMonoGame(), Projection.ToMonoGame(), View.ToMonoGame(), Matrix.Identity.ToMonoGame());
+            Microsoft.Xna.Framework.Vector3 temp = GraphicsDevice.Viewport.Project(
+                new Vector3(position, 0).ToMonoGame(), 
+                Projection.ToMonoGame(), 
+                View.ToMonoGame(), 
+                Matrix.Identity.ToMonoGame());
+
             return new Vector2(temp.X, temp.Y);
         }
 
         public Vector2 ConvertScreenToWorld(int x, int y)
         {
-            Vector3 temp = GraphicsDevice.Viewport.Unproject(new Vector3(x, y, 0).ToMonoGame(), Projection.ToMonoGame(), View.ToMonoGame(), Matrix.Identity.ToMonoGame());
+            Microsoft.Xna.Framework.Vector3 temp = GraphicsDevice.Viewport.Unproject(
+                new Vector3(x, y, 0).ToMonoGame(), 
+                Projection.ToMonoGame(), 
+                View.ToMonoGame(), 
+                Matrix.Identity.ToMonoGame());
+
             return new Vector2(temp.X, temp.Y);
         }
 

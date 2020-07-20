@@ -147,7 +147,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
         public override void Update(GameSettings settings, float elapsedSeconds)
         {
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
             DrawString("Keys: (f) toggle friction, (m) toggle motor");
 
             float torque = _joint1.GetMotorTorque(settings.Hz);

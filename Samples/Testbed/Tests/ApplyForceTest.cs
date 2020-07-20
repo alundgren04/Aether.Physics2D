@@ -132,12 +132,12 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             }
         }
 
-        public override void Update(GameSettings settings, Microsoft.Xna.Framework.float elapsedSeconds)
+        public override void Update(GameSettings settings, float elapsedSeconds)
         {
             DrawString("Note: The left side of the ship has a different density than the right side of the ship");
             
 
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
         }
 
         public override void Keyboard(KeyboardManager keyboardManager)

@@ -5,20 +5,14 @@
 
 using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using tainicom.Aether.Physics2D.Collision;
 using tainicom.Aether.Physics2D.Collision.Shapes;
-using tainicom.Aether.Physics2D.Common;
 using tainicom.Aether.Physics2D.Common.Decomposition;
 using tainicom.Aether.Physics2D.Dynamics;
-using tainicom.Aether.Physics2D.Samples.ScreenSystem;
-
-using tainicom.Aether.Physics2D.Common;
-using Color = Microsoft.Xna.Framework.Color;
-using Rectangle = Microsoft.Xna.Framework.Rectangle;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
+using Helio.Physics.Compatibility.MonoGame;
 
 namespace tainicom.Aether.Physics2D.Samples.DrawingSystem
 {
@@ -48,7 +42,7 @@ namespace tainicom.Aether.Physics2D.Samples.DrawingSystem
         public static Vector2 CalculateOrigin(Body b, float pixelsPerMeter)
         {
             Vector2 lBound = new Vector2(float.MaxValue);
-            Transform trans = b.GetTransform();
+            Common.Transform trans = b.GetTransform();
 
             for (int i = 0; i < b.FixtureList.Count; ++i)
             {
@@ -56,13 +50,14 @@ namespace tainicom.Aether.Physics2D.Samples.DrawingSystem
                 {
                     AABB bounds;
                     b.FixtureList[i].Shape.ComputeAABB(out bounds, ref trans, j);
-                    Vector2.Min(ref lBound, ref bounds.LowerBound, out lBound);
+                    var lowerBounds = bounds.LowerBound.ToMonoGame();
+                    Vector2.Min(ref lBound, ref lowerBounds, out lBound);
                 }
             }
 
             // calculate body offset from its center and add a 1 pixel border
             // because we generate the textures a little bigger than the actual body's fixtures
-            return pixelsPerMeter * (b.Position - lBound) + new Vector2(1f);
+            return pixelsPerMeter * (b.Position.ToMonoGame() - lBound) + new Vector2(1f);
         }
 
         public void LoadContent(ContentManager contentManager)
@@ -87,13 +82,13 @@ namespace tainicom.Aether.Physics2D.Samples.DrawingSystem
             }
         }
 
-        public Texture2D TextureFromVertices(Vertices vertices, MaterialType type, Color color, float materialScale, float pixelsPerMeter)
+        public Texture2D TextureFromVertices(Common.Vertices vertices, MaterialType type, Color color, float materialScale, float pixelsPerMeter)
         {
             // copy vertices
-            Vertices verts = new Vertices(vertices);
+            Common.Vertices verts = new Common.Vertices(vertices);
 
             // scale to display units (i.e. pixels) for rendering to texture
-            Vector2 scale = Vector2.One * pixelsPerMeter;
+            Common.Vector2 scale = (Common.Vector2.One * pixelsPerMeter);
             verts.Scale(ref scale);
 
             // translate the boundingbox center to the texture center
@@ -101,14 +96,14 @@ namespace tainicom.Aether.Physics2D.Samples.DrawingSystem
             AABB vertsBounds = verts.GetAABB();
             verts.Translate(-vertsBounds.Center);
 
-            List<Vertices> decomposedVerts;
+            List<Common.Vertices> decomposedVerts;
             if (!verts.IsConvex())
             {
                 decomposedVerts = Triangulate.ConvexPartition(verts, TriangulationAlgorithm.Earclip);
             }
             else
             {
-                decomposedVerts = new List<Vertices>();
+                decomposedVerts = new List<Common.Vertices>();
                 decomposedVerts.Add(verts);
             }
             List<VertexPositionColorTexture[]> verticesFill = new List<VertexPositionColorTexture[]>(decomposedVerts.Count);

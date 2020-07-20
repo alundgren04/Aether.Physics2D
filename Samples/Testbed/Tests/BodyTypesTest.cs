@@ -122,7 +122,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             //    }
             //}
 
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
             DrawString("Keys: (d) dynamic, (s) static, (k) kinematic");
         }
 

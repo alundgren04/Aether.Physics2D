@@ -1,0 +1,4 @@
+C:\Users\alund\Documents\GitHub\AetherX\Aether.Physics2D.Tests\obj\Debug\netstandard1.6\Aether.Physics2D.Tests.csprojAssemblyReference.cache
+C:\Users\alund\Documents\GitHub\AetherX\Aether.Physics2D.Tests\obj\Debug\netstandard1.6\Aether.Physics2D.Tests.csproj.CoreCompileInputs.cache
+C:\Users\alund\Documents\GitHub\AetherX\Aether.Physics2D.Tests\obj\Debug\netstandard1.6\Aether.Physics2D.Tests.AssemblyInfoInputs.cache
+C:\Users\alund\Documents\GitHub\AetherX\Aether.Physics2D.Tests\obj\Debug\netstandard1.6\Aether.Physics2D.Tests.AssemblyInfo.cs

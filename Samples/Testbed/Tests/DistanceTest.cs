@@ -31,6 +31,8 @@ using tainicom.Aether.Physics2D.Common;
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
 using tainicom.Aether.Physics2D.Common;
 using Microsoft.Xna.Framework.Input;
+using Helio.Common;
+using System.Drawing;
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 {
@@ -64,7 +66,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
         public override void Update(GameSettings settings, float elapsedSeconds)
         {
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
 
             DistanceInput input;
             input.ProxyA = new DistanceProxy(_polygonA, 0);
@@ -82,7 +84,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             
             DebugView.BeginCustomDraw(ref GameInstance.Projection, ref GameInstance.View);
             {
-                Color color = new Color(0.9f, 0.9f, 0.9f);
+                Color color = ColorHelper.FromPercentages(0.9f, 0.9f, 0.9f);
                 Vector2[] v = new Vector2[Settings.MaxPolygonVertices];
                 for (int i = 0; i < _polygonA.Vertices.Count; ++i)
                 {
@@ -100,10 +102,10 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             Vector2 x1 = output.PointA;
             Vector2 x2 = output.PointB;
 
-            DebugView.DrawPoint(x1, 0.5f, new Color(1.0f, 0.0f, 0.0f));
-            DebugView.DrawPoint(x2, 0.5f, new Color(1.0f, 0.0f, 0.0f));
+            DebugView.DrawPoint(x1, 0.5f, ColorHelper.FromPercentages(1.0f, 0.0f, 0.0f));
+            DebugView.DrawPoint(x2, 0.5f, ColorHelper.FromPercentages(1.0f, 0.0f, 0.0f));
 
-            DebugView.DrawSegment(x1, x2, new Color(1.0f, 1.0f, 0.0f));
+            DebugView.DrawSegment(x1, x2, ColorHelper.FromPercentages(1.0f, 1.0f, 0.0f));
             DebugView.EndCustomDraw();
         }
 

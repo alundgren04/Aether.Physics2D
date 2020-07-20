@@ -45,7 +45,8 @@ using Microsoft.Xna.Framework.Input;
 using GraphicsDeviceManager = Microsoft.Xna.Framework.GraphicsDeviceManager;
 using Game = Microsoft.Xna.Framework.Game;
 using PlayerIndex = Microsoft.Xna.Framework.PlayerIndex;
-using Color = Microsoft.Xna.Framework.Color;
+using System.Drawing;
+using Helio.Common;
 #endregion
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Framework
@@ -58,6 +59,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Framework
         internal int TextLine;
         WorldMouseTestUtility WorldMouseTestUtility;
         private IndependentActiveArea MouseActiveArea = null;
+
 
         protected Test()
         {
@@ -100,7 +102,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Framework
                 this.DebugView.BeginCustomDraw(projection, view);
 
                 // show the user where the independent active area would be moved provided right mouse button is clicked
-                Color independentActiveAreaColor = new Color(0.30f, 0.10f, 0.10f);
+                Color independentActiveAreaColor = ColorHelper.FromPercentages(0.30f, 0.10f, 0.10f);
                 AABB newActiveArea = new AABB(this.MouseWorldPosition, this.IndependentActiveAreaRadius * 2, this.IndependentActiveAreaRadius * 2);
                 this.DebugView.DrawAABB(ref newActiveArea, independentActiveAreaColor);
 

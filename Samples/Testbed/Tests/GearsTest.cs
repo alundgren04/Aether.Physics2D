@@ -119,7 +119,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
         public override void Update(GameSettings settings, float elapsedSeconds)
         {
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
 
             float ratio = _joint4.Ratio;
             float value = _joint1.JointAngle + ratio * _joint2.JointAngle;

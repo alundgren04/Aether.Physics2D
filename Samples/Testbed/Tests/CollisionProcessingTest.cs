@@ -137,7 +137,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
         public override void Update(GameSettings settings, float elapsedSeconds)
         {
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
 
             for (int i = 0; i < _removeBodies.Count; i++)
             {

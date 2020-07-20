@@ -11,6 +11,8 @@ using tainicom.Aether.Physics2D.Dynamics;
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
 using tainicom.Aether.Physics2D.Common;
 using Microsoft.Xna.Framework.Input;
+using Helio.Common;
+using System.Drawing;
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 {
@@ -102,7 +104,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
         public override void Update(GameSettings settings, float elapsedSeconds)
         {
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
 
             DrawString("Press: (,) to explode at mouse position.");
             
@@ -114,7 +116,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             float powernumber = (float)((int)(_force * 10)) / 10;
             DrawString("Power: " + powernumber);
 
-            Color color = new Color(0.4f, 0.7f, 0.8f);
+            Color color = ColorHelper.FromPercentages(0.4f, 0.7f, 0.8f);
             DebugView.BeginCustomDraw(ref GameInstance.Projection, ref GameInstance.View);
             DebugView.DrawCircle(_mousePos, _radius, color);
 

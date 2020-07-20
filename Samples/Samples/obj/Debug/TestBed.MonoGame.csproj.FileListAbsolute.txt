@@ -1,0 +1,4 @@
+C:\Users\alund\Documents\GitHub\AetherX\Samples\Samples\obj\Debug\TestBed.MonoGame.csprojAssemblyReference.cache
+C:\Users\alund\Documents\GitHub\AetherX\Samples\Samples\obj\Debug\TestBed.MonoGame.csproj.CoreCompileInputs.cache
+C:\Users\alund\Documents\GitHub\AetherX\Samples\Samples\obj\Debug\Samples.Samples.exe
+C:\Users\alund\Documents\GitHub\AetherX\Samples\Samples\obj\Debug\Samples.Samples.pdb

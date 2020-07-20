@@ -32,17 +32,21 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
         }
         
         public override void Update(GameSettings settings, float elapsedSeconds)
-        {   
+        {
+            // NOTE: With thi simplification of only having "elapsedSeconds" the "half game time" isn't feasible without extra code,
+            //       so just calling update normally.
+            base.Update(settings, elapsedSeconds);
+
             // run the simulation at smaller time intervals to improve accuracy
-            var halfGameTime = new GameTime(gameTime.TotalGameTime, TimeSpan.FromTicks(gameTime.ElapsedGameTime.Ticks/8), gameTime.IsRunningSlowly);
-            base.Update(settings, halfGameTime);
-            base.Update(settings, halfGameTime);
-            base.Update(settings, halfGameTime);
-            base.Update(settings, halfGameTime);
-            base.Update(settings, halfGameTime);
-            base.Update(settings, halfGameTime);
-            base.Update(settings, halfGameTime);
-            base.Update(settings, halfGameTime);
+            //var halfGameTime = new GameTime(gameTime.TotalGameTime, TimeSpan.FromTicks(gameTime.ElapsedGameTime.Ticks/8), gameTime.IsRunningSlowly);
+            //base.Update(settings, halfGameTime);
+            //base.Update(settings, halfGameTime);
+            //base.Update(settings, halfGameTime);
+            //base.Update(settings, halfGameTime);
+            //base.Update(settings, halfGameTime);
+            //base.Update(settings, halfGameTime);
+            //base.Update(settings, halfGameTime);
+            //base.Update(settings, halfGameTime);
         }
 
         public static Test Create()

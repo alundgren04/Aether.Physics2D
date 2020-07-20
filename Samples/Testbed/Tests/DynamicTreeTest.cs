@@ -31,6 +31,8 @@ using tainicom.Aether.Physics2D.Collision;
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
 using tainicom.Aether.Physics2D.Common;
 using Microsoft.Xna.Framework.Input;
+using System.Drawing;
+using Helio.Common;
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 {
@@ -107,36 +109,36 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
                 if (actor.ProxyId == -1)
                     continue;
 
-                Color ca = new Color(0.9f, 0.9f, 0.9f);
+                Color ca = ColorHelper.FromPercentages(0.9f, 0.9f, 0.9f);
                 if (actor == _rayActor && actor.Overlap)
                 {
-                    ca = new Color(0.9f, 0.6f, 0.6f);
+                    ca = ColorHelper.FromPercentages(0.9f, 0.6f, 0.6f);
                 }
                 else if (actor == _rayActor)
                 {
-                    ca = new Color(0.6f, 0.9f, 0.6f);
+                    ca = ColorHelper.FromPercentages(0.6f, 0.9f, 0.6f);
                 }
                 else if (actor.Overlap)
                 {
-                    ca = new Color(0.6f, 0.6f, 0.9f);
+                    ca = ColorHelper.FromPercentages(0.6f, 0.6f, 0.9f);
                 }
 
                 DebugView.DrawAABB(ref actor.AABB, ca);
             }
 
-            Color c = new Color(0.7f, 0.7f, 0.7f);
+            Color c = ColorHelper.FromPercentages(0.7f, 0.7f, 0.7f);
             DebugView.DrawAABB(ref _queryAABB, c);
 
             DebugView.DrawSegment(_rayCastInput.Point1, _rayCastInput.Point2, c);
 
-            Color c1 = new Color(0.2f, 0.9f, 0.2f);
-            Color c2 = new Color(0.9f, 0.2f, 0.2f);
+            Color c1 = ColorHelper.FromPercentages(0.2f, 0.9f, 0.2f);
+            Color c2 = ColorHelper.FromPercentages(0.9f, 0.2f, 0.2f);
             DebugView.DrawPoint(_rayCastInput.Point1, 0.1f, c1);
             DebugView.DrawPoint(_rayCastInput.Point2, 0.1f, c2);
 
             if (_rayActor != null)
             {
-                Color cr = new Color(0.2f, 0.2f, 0.9f);
+                Color cr = ColorHelper.FromPercentages(0.2f, 0.2f, 0.9f);
                 Vector2 p = _rayCastInput.Point1 + _rayActor.Fraction * (_rayCastInput.Point2 - _rayCastInput.Point1);
                 DebugView.DrawPoint(p, 0.1f, cr);
             }

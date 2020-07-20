@@ -65,7 +65,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             body.BodyType = BodyType.Dynamic;
             body.SetRestitution(1f);
 
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
         }
 
         public static Test Create()

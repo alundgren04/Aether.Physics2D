@@ -43,6 +43,7 @@
     </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Framework\BodyStructureType.cs" />
     <Compile Include="Framework\GameSettings.cs" />
     <Compile Include="Framework\KeyboardManager.cs" />
     <Compile Include="Framework\Rand.cs" />
@@ -136,12 +137,14 @@
     <Compile Include="Tests\VerticalStackTest.cs" />
     <Compile Include="Tests\WebTest.cs" />
     <Compile Include="Tests\YuPengPolygonTest.cs" />
+    <Compile Include="Framework\WorldPerformanceTestSetup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
       <HintPath>..\..\ThirdPartyLibraries\MonoGame\Windows\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="..\TestbedContent\TestbedContent.mgcb">
@@ -214,9 +217,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Aether.Physics2D.Tests\Aether.Physics2D.Tests.csproj">
-      <Project>{83a440e3-9d82-48e6-b9ac-26d60d6cb639}</Project>
-      <Name>Aether.Physics2D.Tests</Name>
+    <ProjectReference Include="..\..\Helio.Common\Helio.Common.csproj">
+      <Project>{BCF03532-357A-446A-88D6-5FA6B2A4C73E}</Project>
+      <Name>Helio.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Helio.Physics.Compatibility.MonoGame\Helio.Physics.Compatibility.MonoGame.csproj">
       <Project>{319F803F-6A45-455A-9BA9-83C57286A2AA}</Project>

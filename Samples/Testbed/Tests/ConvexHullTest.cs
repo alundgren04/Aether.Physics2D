@@ -8,6 +8,7 @@ using tainicom.Aether.Physics2D.Common;
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
 using tainicom.Aether.Physics2D.Common;
 using Microsoft.Xna.Framework.Input;
+using Helio.Common;
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 {
@@ -55,18 +56,18 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
         public override void Update(GameSettings settings, float elapsedSeconds)
         {
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
 
             PolygonShape shape = new PolygonShape(new Vertices(_points), 0f);
 
             DrawString("Press g to generate a new random convex hull");
 
             DebugView.BeginCustomDraw(ref GameInstance.Projection, ref GameInstance.View);
-            DebugView.DrawPolygon(shape.Vertices.ToArray(), shape.Vertices.Count, new Color(0.9f, 0.9f, 0.9f));
+            DebugView.DrawPolygon(shape.Vertices.ToArray(), shape.Vertices.Count, ColorHelper.FromPercentages(0.9f, 0.9f, 0.9f));
 
             for (int i = 0; i < _count; ++i)
             {
-                DebugView.DrawPoint(_points[i], 0.1f, new Color(0.9f, 0.5f, 0.5f));
+                DebugView.DrawPoint(_points[i], 0.1f, ColorHelper.FromPercentages(0.9f, 0.5f, 0.5f));
                 Vector2 position = GameInstance.ConvertWorldToScreen(_points[i]);
                 DebugView.DrawString((int)position.X, (int)position.Y, i.ToString());
             }

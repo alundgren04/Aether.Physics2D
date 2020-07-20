@@ -79,7 +79,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
             PathManager.MoveBodyOnPath(_path, _movingBody, _time, 1f, 1f / 60f);
 
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
         }
 
         internal static Test Create()

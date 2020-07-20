@@ -1,6 +1,6 @@
 ﻿
 
-using Aether.Physics2D.Tests;
+
 using tainicom.Aether.Physics2D.Common;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -64,7 +64,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
         public override void Update(GameSettings settings, float elapsedSeconds)
         {
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
 
             const int LINE_HEIGHT = 15;
             TextLine += LINE_HEIGHT * 14; // skip down 14 lines, so we write below the performance info.
@@ -100,7 +100,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
                 TextLine += LINE_HEIGHT;
 
-                DrawString("[IsRunningSlowly = " + gameTime.IsRunningSlowly.ToString().ToUpper() + "]" + "      Zoom = " + Math.Round(this.GameInstance.ViewZoom, 2) );
+                DrawString("Zoom = " + Math.Round(this.GameInstance.ViewZoom, 2) );
 
                 TextLine += LINE_HEIGHT;
                 DrawString("Press Left Control to toggle debug rendering of game world: " + this.DebugView.Enabled);
@@ -128,7 +128,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
         public override void DrawDebugView(float elapsedSeconds, ref Matrix projection, ref Matrix view)
         {
-            base.DrawDebugView(gameTime, ref projection, ref view);
+            base.DrawDebugView(elapsedSeconds, ref projection, ref view);
 
             #region render game center and axii
 

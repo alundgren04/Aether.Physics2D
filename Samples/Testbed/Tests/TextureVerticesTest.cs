@@ -57,7 +57,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             DrawString("Triangulation took " + _sw.ElapsedMilliseconds + " ms");
             
 
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
         }
 
         public static Test Create()

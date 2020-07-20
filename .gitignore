@@ -507,3 +507,4 @@ Samples/Testbed/bin/Debug/Windows.MG/System.Xml.XPath.XDocument.dll
 *.xnb
 *.exe
 *.CopyComplete
+*.cache

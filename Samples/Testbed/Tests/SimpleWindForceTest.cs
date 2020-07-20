@@ -8,6 +8,7 @@ using tainicom.Aether.Physics2D.Dynamics;
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
 using tainicom.Aether.Physics2D.Common;
 using Microsoft.Xna.Framework.Input;
+using System.Drawing;
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 {
@@ -93,7 +94,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             //DebugView.DrawSegment(SimpleWind.Position, SimpleWind.Direction-SimpleWind.Position, Color.Red);
             DrawPointForce();
             DebugView.EndCustomDraw();
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
         }
 
         public override void Keyboard(KeyboardManager keyboardManager)

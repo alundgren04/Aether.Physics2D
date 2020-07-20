@@ -11,6 +11,7 @@ using tainicom.Aether.Physics2D.Common;
 using Vector2 = tainicom.Aether.Physics2D.Common.Vector2;
 using Vector3 = tainicom.Aether.Physics2D.Common.Vector3;
 using Matrix = tainicom.Aether.Physics2D.Common.Matrix;
+using System.Drawing;
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 {
@@ -140,7 +141,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
             DebugView.EndCustomDraw();
 
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
         }
 
         private void DrawVertices(Vertices vertices)

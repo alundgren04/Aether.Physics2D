@@ -111,7 +111,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
                 DebugView.DrawString((int)screenPosition.X, (int)screenPosition.Y, title);
             }
 
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
         }
 
         public static Test Create()

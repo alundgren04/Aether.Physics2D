@@ -56,7 +56,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
         public override void Update(GameSettings settings, float elapsedSeconds)
         {
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
 
             if (!settings.Pause && settings.Hz > 0.0f)
                 _time += 1.0f / settings.Hz;

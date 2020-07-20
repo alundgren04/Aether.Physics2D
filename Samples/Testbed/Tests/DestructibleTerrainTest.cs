@@ -4,6 +4,7 @@
  */
 
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
+using System.Drawing;
 #if WINDOWS
 using tainicom.Aether.Physics2D.Collision;
 using tainicom.Aether.Physics2D.Common.Decomposition;
@@ -12,6 +13,7 @@ using tainicom.Aether.Physics2D.Dynamics;
 using tainicom.Aether.Physics2D.Common;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Helio.Common;
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 {
@@ -76,7 +78,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
                 _terrain.RegenerateTerrain();
 
                 DebugView.BeginCustomDraw(ref GameInstance.Projection, ref GameInstance.View);
-                DebugView.DrawSolidCircle(position, _circleRadius, Vector2.UnitY, Color.Blue * 0.5f);
+                DebugView.DrawSolidCircle(position, _circleRadius, Vector2.UnitY, Color.Blue.MultiplyBy(0.5f));
                 DebugView.EndCustomDraw();
             }
             else if (state.LeftButton == ButtonState.Pressed)
@@ -85,7 +87,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
                 _terrain.RegenerateTerrain();
 
                 DebugView.BeginCustomDraw(ref GameInstance.Projection, ref GameInstance.View);
-                DebugView.DrawSolidCircle(position, _circleRadius, Vector2.UnitY, Color.Red * 0.5f);
+                DebugView.DrawSolidCircle(position, _circleRadius, Vector2.UnitY, Color.Red.MultiplyBy(0.5f));
                 DebugView.EndCustomDraw();
             }
             else if (state.MiddleButton == ButtonState.Pressed)
@@ -140,7 +142,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
         public override void Update(GameSettings settings, float elapsedSeconds)
         {
             DebugView.BeginCustomDraw(ref GameInstance.Projection, ref GameInstance.View);
-            DebugView.DrawAABB(ref _terrainArea, Color.Red * 0.5f);
+            DebugView.DrawAABB(ref _terrainArea, Color.Red.MultiplyBy( 0.5f));
             DebugView.EndCustomDraw();
 
             DrawString("Left click and drag the mouse to destroy terrain!");
@@ -150,7 +152,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             TextLine += 25;
             DrawString("Press g or h to decrease/increase circle radius: " + _circleRadius);
 
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
         }
 
         internal static Test Create()

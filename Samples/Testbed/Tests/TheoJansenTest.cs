@@ -209,7 +209,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             DrawString("Keys: left = a, brake = s, right = d, toggle motor = m");
 
 
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
         }
 
         public override void Keyboard(KeyboardManager keyboardManager)

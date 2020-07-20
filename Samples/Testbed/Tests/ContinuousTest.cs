@@ -74,7 +74,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
         public override void Update(GameSettings settings, float elapsedSeconds)
         {
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
 
             DrawString("Press C to toggle CCD. CCD is Currently: " + (_ground.IgnoreCCD ? "Off" : "On"));
 

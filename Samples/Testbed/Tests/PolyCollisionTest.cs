@@ -32,6 +32,8 @@ using tainicom.Aether.Physics2D.Dynamics.Contacts;
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
 using tainicom.Aether.Physics2D.Common;
 using Microsoft.Xna.Framework.Input;
+using Helio.Common;
+using System.Drawing;
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 {
@@ -80,7 +82,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
             DebugView.BeginCustomDraw(ref GameInstance.Projection, ref GameInstance.View);
             {
-                Color color = new Color(0.9f, 0.9f, 0.9f);
+                Color color = ColorHelper.FromPercentages(0.9f, 0.9f, 0.9f);
                 Vector2[] v = new Vector2[Settings.MaxPolygonVertices];
                 for (int i = 0; i < _polygonA.Vertices.Count; ++i)
                 {
@@ -97,7 +99,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
             for (int i = 0; i < manifold.PointCount; ++i)
             {
-                DebugView.DrawPoint(points[i], 0.1f, new Color(0.9f, 0.3f, 0.3f));
+                DebugView.DrawPoint(points[i], 0.1f, ColorHelper.FromPercentages(0.9f, 0.3f, 0.3f));
                 DrawString(points[i].ToString());
             }
             DebugView.EndCustomDraw();

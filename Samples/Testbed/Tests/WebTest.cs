@@ -158,7 +158,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
         public override void Update(GameSettings settings, float elapsedSeconds)
         {
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
             DrawString("This demonstrates a soft distance joint.");
 
             DrawString("Press: (b) to delete a body, (j) to delete a joint");

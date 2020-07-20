@@ -182,7 +182,8 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
         public override void Update(GameSettings settings, float elapsedSeconds)
         {
-            _time += gameTime.ElapsedGameTime.Milliseconds;
+            var elapsedMilliseconds = elapsedSeconds * 1000;
+            _time += elapsedMilliseconds; //gameTime.ElapsedGameTime.Milliseconds;
 
             if (_time >= 300)
             {
@@ -206,7 +207,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
                 _save = !_save;
             }
 
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
         }
 
         internal static Test Create()

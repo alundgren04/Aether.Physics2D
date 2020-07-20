@@ -35,6 +35,8 @@ using tainicom.Aether.Physics2D.Dynamics;
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
 using tainicom.Aether.Physics2D.Common;
 using Microsoft.Xna.Framework.Input;
+using Helio.Common;
+using System.Drawing;
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 {
@@ -57,7 +59,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
         private void DrawFixture(Fixture fixture)
         {
-            Color color = new Color(0.95f, 0.95f, 0.6f);
+            Color color = ColorHelper.FromPercentages(0.95f, 0.95f, 0.6f);
             Transform xf = fixture.Body.GetTransform();
 
             switch (fixture.Shape.ShapeType)
@@ -271,7 +273,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
         public override void Update(GameSettings settings, float elapsedSeconds)
         {
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
 
             PolyShapesCallback callback = new PolyShapesCallback();
             callback.Circle.Radius = 2.0f;
@@ -285,7 +287,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             DebugView.BeginCustomDraw(ref GameInstance.Projection, ref GameInstance.View);
             World.FindFixturesInAABB(callback.ReportFixture, ref aabb);
 
-            Color color = new Color(0.4f, 0.7f, 0.8f);
+            Color color = ColorHelper.FromPercentages(0.4f, 0.7f, 0.8f);
             DebugView.DrawCircle(callback.Circle.Position, callback.Circle.Radius, color);
             DebugView.EndCustomDraw();
 

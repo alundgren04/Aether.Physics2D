@@ -242,7 +242,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             base.Keyboard(keyboardManager);
         }
 
-        public override void Update(GameSettings settings, Microsoft.Xna.Framework.float elapsedSeconds)
+        public override void Update(GameSettings settings, float elapsedSeconds)
         {
             DrawString("Keys: left = a, brake = s, right = d, hz down = q, hz up = e");
 
@@ -253,7 +253,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
             GameInstance.ViewCenter = _car.Position;
 
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
         }
 
         internal static Test Create()

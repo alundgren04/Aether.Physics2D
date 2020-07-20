@@ -30,6 +30,7 @@ using tainicom.Aether.Physics2D.Collision.Shapes;
 using tainicom.Aether.Physics2D.Common;
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
 using tainicom.Aether.Physics2D.Common;
+using Helio.Common;
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 {
@@ -51,7 +52,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
         public override void Update(GameSettings settings, float elapsedSeconds)
         {
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
 
             Sweep sweepA = new Sweep();
             sweepA.C0 = new Vector2(24.0f, -60.0f);
@@ -92,7 +93,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             {
                 vertices[i] = Transform.Multiply(_shapeA.Vertices[i], ref transformA);
             }
-            DebugView.DrawPolygon(vertices, _shapeA.Vertices.Count, new Color(0.9f, 0.9f, 0.9f));
+            DebugView.DrawPolygon(vertices, _shapeA.Vertices.Count, ColorHelper.FromPercentages(0.9f, 0.9f, 0.9f));
 
             Transform transformB;
             sweepB.GetTransform(out transformB, 0.0f);
@@ -101,21 +102,21 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             {
                 vertices[i] = Transform.Multiply(_shapeB.Vertices[i], ref transformB);
             }
-            DebugView.DrawPolygon(vertices, _shapeB.Vertices.Count, new Color(0.5f, 0.9f, 0.5f));
+            DebugView.DrawPolygon(vertices, _shapeB.Vertices.Count, ColorHelper.FromPercentages(0.5f, 0.9f, 0.5f));
 
             sweepB.GetTransform(out transformB, output.T);
             for (int i = 0; i < _shapeB.Vertices.Count; ++i)
             {
                 vertices[i] = Transform.Multiply(_shapeB.Vertices[i], ref transformB);
             }
-            DebugView.DrawPolygon(vertices, _shapeB.Vertices.Count, new Color(0.5f, 0.7f, 0.9f));
+            DebugView.DrawPolygon(vertices, _shapeB.Vertices.Count, ColorHelper.FromPercentages(0.5f, 0.7f, 0.9f));
 
             sweepB.GetTransform(out transformB, 1.0f);
             for (int i = 0; i < _shapeB.Vertices.Count; ++i)
             {
                 vertices[i] = Transform.Multiply(_shapeB.Vertices[i], ref transformB);
             }
-            DebugView.DrawPolygon(vertices, _shapeB.Vertices.Count, new Color(0.9f, 0.5f, 0.5f));
+            DebugView.DrawPolygon(vertices, _shapeB.Vertices.Count, ColorHelper.FromPercentages(0.9f, 0.5f, 0.5f));
             DebugView.EndCustomDraw();
         }
     }

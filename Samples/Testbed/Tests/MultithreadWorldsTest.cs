@@ -81,11 +81,11 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
         public override void Update(GameSettings settings, float elapsedSeconds)
         {
-            base.Update(settings, gameTime); // update World synchronously in the main thread
+            base.Update(settings, elapsedSeconds); // update World synchronously in the main thread
 
             if (!settings.Pause)
             {
-                float timeStep = Math.Min((float)gameTime.ElapsedGameTime.TotalSeconds, (1f / 30f));
+                float timeStep = Math.Min(elapsedSeconds, (1f / 30f));
 
                 var st2 = Task.Factory.StartNew(() => world2.Step(timeStep)); // update world2 asynchronously in the threadpool
                 var st3 = Task.Factory.StartNew(() => world3.Step(timeStep)); // update world3 asynchronously in the threadpool
@@ -98,7 +98,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
         public override void DrawDebugView(float elapsedSeconds, ref Matrix projection, ref Matrix view)
         {
-            base.DrawDebugView(gameTime, ref projection, ref view);
+            base.DrawDebugView(elapsedSeconds, ref projection, ref view);
 
             var worldMtx = Matrix.CreateTranslation( -34, 0, 0);
             debugView2.RenderDebugData(ref projection, ref view, ref worldMtx);

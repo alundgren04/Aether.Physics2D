@@ -15,6 +15,8 @@ using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
 using tainicom.Aether.Physics2D.Common;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Drawing;
+using Helio.Physics.Compatibility.MonoGame;
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 {
@@ -52,13 +54,16 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
             foreach (var fluidParticle in World.Fluid.Particles)
             {
-                _spriteBatch.Draw(_pixel, GameInstance.ConvertWorldToScreen(new Vector2(fluidParticle.Position.X, fluidParticle.Position.Y)), Color.White);
+                _spriteBatch.Draw(
+                    _pixel, 
+                    GameInstance.ConvertWorldToScreen(new Vector2(fluidParticle.Position.X, fluidParticle.Position.Y)).ToMonoGame(), 
+                    Color.White.ToMonoGame());
             }
             _spriteBatch.End();
 
             DrawString("Particles: " + World.Fluid.Particles.Count);
             
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
         }
 
         public override void Mouse(MouseState state, MouseState oldState)

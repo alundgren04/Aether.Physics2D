@@ -7,8 +7,9 @@ using tainicom.Aether.Physics2D.Common;
 using tainicom.Aether.Physics2D.Dynamics;
 using tainicom.Aether.Physics2D.Samples.DrawingSystem;
 using tainicom.Aether.Physics2D.Samples.ScreenSystem;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Drawing;
+using Helio.Physics.Compatibility.MonoGame;
 
 namespace tainicom.Aether.Physics2D.Samples.Demos.Prefabs
 {
@@ -52,8 +53,8 @@ namespace tainicom.Aether.Physics2D.Samples.Demos.Prefabs
             _agentBody.CreateCircle(0.5f, 0.5f, new Vector2(0f, -2f));
 
             //GFX
-            _box = new Sprite(screenManager.Assets.TextureFromVertices(PolygonTools.CreateRectangle(2.5f / 2f, 0.4f / 2f), MaterialType.Blank, Color.White, 1f, 24f));
-            _knob = new Sprite(screenManager.Assets.CircleTexture(0.5f, MaterialType.Blank, Color.Orange, 1f, 24f));
+            _box = new Sprite(screenManager.Assets.TextureFromVertices(PolygonTools.CreateRectangle(2.5f / 2f, 0.4f / 2f), MaterialType.Blank, Color.White.ToMonoGame(), 1f, 24f));
+            _knob = new Sprite(screenManager.Assets.CircleTexture(0.5f, MaterialType.Blank, Color.Orange.ToMonoGame(), 1f, 24f));
             _offset = (2f);
         }
 

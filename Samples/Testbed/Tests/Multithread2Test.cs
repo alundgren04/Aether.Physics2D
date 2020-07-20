@@ -68,7 +68,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
         public override void Update(GameSettings settings, float elapsedSeconds)
         {
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
 
             if (_count < Count)
             {
@@ -101,8 +101,8 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             else if (threshold == int.MaxValue) DrawString("CollideMultithreadThreshold: int.MaxValue");
             else DrawString("CollideMultithreadThreshold is Currently: " + threshold);
             
-            if (gameTime.IsRunningSlowly)
-                DrawString("[IsRunningSlowly]");
+            //if (gameTime.IsRunningSlowly)
+            //    DrawString("[IsRunningSlowly]");
         }
 
         public override void Keyboard(KeyboardManager keyboardManager)

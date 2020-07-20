@@ -146,7 +146,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
                 _angularVelocity = _body1.AngularVelocity;
             }
 
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
         }
 
         internal static Test Create()

@@ -74,7 +74,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
                 fixture.Friction = 0.3f;
             }
 
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
         }
 
         internal static Test Create()

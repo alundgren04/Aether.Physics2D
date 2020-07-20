@@ -7,6 +7,7 @@ using tainicom.Aether.Physics2D.Common;
 using tainicom.Aether.Physics2D.Common.ConvexHull;
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
 using tainicom.Aether.Physics2D.Common;
+using System.Drawing;
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 {
@@ -68,7 +69,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             DebugView.DrawPolygon(_chainHull.ToArray(), _chainHull.Count, Color.Blue);
             DebugView.EndCustomDraw();
 
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
         }
 
         internal static Test Create()

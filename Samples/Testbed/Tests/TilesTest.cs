@@ -116,7 +116,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             //DrawString(string.Format("dynamic tree height = {0}, min = {1}", height, (int)minimumHeight));
             //DrawString(string.Format("create time = {0} ms, fixture count = {1}", _createTime, _fixtureCount));
 
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
         }
 
         internal static Test Create()

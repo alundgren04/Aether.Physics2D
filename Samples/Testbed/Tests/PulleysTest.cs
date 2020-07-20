@@ -75,7 +75,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
         public override void Update(GameSettings settings, float elapsedSeconds)
         {
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
 
             float ratio = _joint1.Ratio;
             float l = _joint1.LengthA + ratio * _joint1.LengthB;

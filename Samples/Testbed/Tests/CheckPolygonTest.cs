@@ -8,6 +8,7 @@ using tainicom.Aether.Physics2D.Common;
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
 using tainicom.Aether.Physics2D.Common;
 using Microsoft.Xna.Framework.Input;
+using System.Drawing;
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 {
@@ -61,7 +62,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             DebugView.DrawAABB(ref aabb, Color.HotPink);
 
             DebugView.EndCustomDraw();
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
         }
 
         internal static Test Create()

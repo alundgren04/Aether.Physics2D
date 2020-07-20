@@ -32,6 +32,7 @@ using tainicom.Aether.Physics2D.Dynamics;
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
 using tainicom.Aether.Physics2D.Common;
 using Microsoft.Xna.Framework.Input;
+using Helio.Common;
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 {
@@ -195,7 +196,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
         {
             bool advanceRay = settings.Pause == false || settings.SingleStep;
 
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
             DrawString("Press 1-5 to drop stuff");
             
 
@@ -218,16 +219,16 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             DebugView.BeginCustomDraw(ref GameInstance.Projection, ref GameInstance.View);
             if (_fixture != null)
             {
-                DebugView.DrawPoint(_point, 0.5f, new Color(0.4f, 0.9f, 0.4f));
+                DebugView.DrawPoint(_point, 0.5f, ColorHelper.FromPercentages(0.4f, 0.9f, 0.4f));
 
-                DebugView.DrawSegment(point1, _point, new Color(0.8f, 0.8f, 0.8f));
+                DebugView.DrawSegment(point1, _point, ColorHelper.FromPercentages(0.8f, 0.8f, 0.8f));
 
                 Vector2 head = _point + 0.5f * _normal;
-                DebugView.DrawSegment(_point, head, new Color(0.9f, 0.9f, 0.4f));
+                DebugView.DrawSegment(_point, head, ColorHelper.FromPercentages(0.9f, 0.9f, 0.4f));
             }
             else
             {
-                DebugView.DrawSegment(point1, point2, new Color(0.8f, 0.8f, 0.8f));
+                DebugView.DrawSegment(point1, point2, ColorHelper.FromPercentages(0.8f, 0.8f, 0.8f));
             }
             DebugView.EndCustomDraw();
 

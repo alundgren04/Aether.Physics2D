@@ -98,6 +98,7 @@
       <HintPath>..\..\ThirdPartyLibraries\MonoGame\Windows\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="..\SamplesContent\SamplesContent.mgcb">
@@ -106,6 +107,10 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Helio.Physics.Compatibility.MonoGame\Helio.Physics.Compatibility.MonoGame.csproj">
+      <Project>{319f803f-6a45-455a-9ba9-83c57286a2aa}</Project>
+      <Name>Helio.Physics.Compatibility.MonoGame</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Physics2D.Diagnostics\Diagnostics\Aether.Physics2D.Diagnostics.WINDOWS.MG.csproj">
       <Project>{2ED9AD24-DFBA-441D-BCFB-EAA9520D804D}</Project>
       <Name>Aether.Physics2D.Diagnostics.WINDOWS.MG</Name>

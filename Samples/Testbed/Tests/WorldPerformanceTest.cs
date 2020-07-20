@@ -1,6 +1,6 @@
 ﻿
 
-using Aether.Physics2D.Tests;
+
 using tainicom.Aether.Physics2D.Common;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -14,6 +14,7 @@ using tainicom.Aether.Physics2D.Dynamics.Hibernation;
 using tainicom.Aether.Physics2D.Loaders.RUBE;
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
 using tainicom.Aether.Physics2D.Utilities;
+using System.Drawing;
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 {
@@ -105,7 +106,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
         public override void Update(GameSettings settings, float elapsedSeconds)
         {
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
 
             const int LINE_HEIGHT = 15;
             TextLine += LINE_HEIGHT * 14; // skip down 14 lines, so we write below the performance info.
@@ -139,9 +140,9 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
                 else if (threshold == int.MaxValue) DrawString("CollideMultithreadThreshold: int.MaxValue");
                 else DrawString("CollideMultithreadThreshold is Currently: " + threshold);
 
-                TextLine += LINE_HEIGHT;
+                //TextLine += LINE_HEIGHT;
 
-                DrawString("[IsRunningSlowly = " + gameTime.IsRunningSlowly.ToString().ToUpper() + "]" + "      Zoom = " + Math.Round(this.GameInstance.ViewZoom, 2) );
+                //DrawString("[IsRunningSlowly = " + gameTime.IsRunningSlowly.ToString().ToUpper() + "]" + "      Zoom = " + Math.Round(this.GameInstance.ViewZoom, 2) );
 
                 TextLine += LINE_HEIGHT;
                 DrawString("Press Left Control to toggle debug rendering of game world: " + this.DebugView.Enabled);
@@ -202,7 +203,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
         public override void DrawDebugView(float elapsedSeconds, ref Matrix projection, ref Matrix view)
         {
-            base.DrawDebugView(gameTime, ref projection, ref view);
+            base.DrawDebugView(elapsedSeconds, ref projection, ref view);
 
             #region render game center and axii
 

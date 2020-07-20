@@ -33,6 +33,7 @@ using tainicom.Aether.Physics2D.Dynamics;
 using tainicom.Aether.Physics2D.Samples.Testbed.Framework;
 using tainicom.Aether.Physics2D.Common;
 using Microsoft.Xna.Framework.Input;
+using Helio.Common;
 
 namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 {
@@ -160,7 +161,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
         {
             bool advanceRay = settings.Pause == false || settings.SingleStep;
 
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
 
             DrawString("Press 1-5 to drop stuff, m to change the mode");
             DrawString(string.Format("Mode = {0}", _mode));
@@ -198,18 +199,18 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
                     if (hitClosest)
                     {
                         DebugView.BeginCustomDraw(ref GameInstance.Projection, ref GameInstance.View);
-                        DebugView.DrawPoint(point, .5f, new Color(0.4f, 0.9f, 0.4f));
+                        DebugView.DrawPoint(point, .5f, ColorHelper.FromPercentages(0.4f, 0.9f, 0.4f));
 
-                        DebugView.DrawSegment(point1, point, new Color(0.8f, 0.8f, 0.8f));
+                        DebugView.DrawSegment(point1, point, ColorHelper.FromPercentages(0.8f, 0.8f, 0.8f));
 
                         Vector2 head = point + 0.5f * normal;
-                        DebugView.DrawSegment(point, head, new Color(0.9f, 0.9f, 0.4f));
+                        DebugView.DrawSegment(point, head, ColorHelper.FromPercentages(0.9f, 0.9f, 0.4f));
                         DebugView.EndCustomDraw();
                     }
                     else
                     {
                         DebugView.BeginCustomDraw(ref GameInstance.Projection, ref GameInstance.View);
-                        DebugView.DrawSegment(point1, point2, new Color(0.8f, 0.8f, 0.8f));
+                        DebugView.DrawSegment(point1, point2, ColorHelper.FromPercentages(0.8f, 0.8f, 0.8f));
                         DebugView.EndCustomDraw();
                     }
 
@@ -238,18 +239,18 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
                     if (hitAny)
                     {
                         DebugView.BeginCustomDraw(ref GameInstance.Projection, ref GameInstance.View);
-                        DebugView.DrawPoint(point, .5f, new Color(0.4f, 0.9f, 0.4f));
+                        DebugView.DrawPoint(point, .5f, ColorHelper.FromPercentages(0.4f, 0.9f, 0.4f));
 
-                        DebugView.DrawSegment(point1, point, new Color(0.8f, 0.8f, 0.8f));
+                        DebugView.DrawSegment(point1, point, ColorHelper.FromPercentages(0.8f, 0.8f, 0.8f));
 
                         Vector2 head = point + 0.5f * normal;
-                        DebugView.DrawSegment(point, head, new Color(0.9f, 0.9f, 0.4f));
+                        DebugView.DrawSegment(point, head, ColorHelper.FromPercentages(0.9f, 0.9f, 0.4f));
                         DebugView.EndCustomDraw();
                     }
                     else
                     {
                         DebugView.BeginCustomDraw(ref GameInstance.Projection, ref GameInstance.View);
-                        DebugView.DrawSegment(point1, point2, new Color(0.8f, 0.8f, 0.8f));
+                        DebugView.DrawSegment(point1, point2, ColorHelper.FromPercentages(0.8f, 0.8f, 0.8f));
                         DebugView.EndCustomDraw();
                     }
                     break;
@@ -275,16 +276,16 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
                                       }, point1, point2);
 
                     DebugView.BeginCustomDraw(ref GameInstance.Projection, ref GameInstance.View);
-                    DebugView.DrawSegment(point1, point2, new Color(0.8f, 0.8f, 0.8f));
+                    DebugView.DrawSegment(point1, point2, ColorHelper.FromPercentages(0.8f, 0.8f, 0.8f));
 
                     for (int i = 0; i < points.Count; i++)
                     {
-                        DebugView.DrawPoint(points[i], .5f, new Color(0.4f, 0.9f, 0.4f));
+                        DebugView.DrawPoint(points[i], .5f, ColorHelper.FromPercentages(0.4f, 0.9f, 0.4f));
 
-                        DebugView.DrawSegment(point1, points[i], new Color(0.8f, 0.8f, 0.8f));
+                        DebugView.DrawSegment(point1, points[i], ColorHelper.FromPercentages(0.8f, 0.8f, 0.8f));
 
                         Vector2 head = points[i] + 0.5f * normals[i];
-                        DebugView.DrawSegment(points[i], head, new Color(0.9f, 0.9f, 0.4f));
+                        DebugView.DrawSegment(points[i], head, ColorHelper.FromPercentages(0.9f, 0.9f, 0.4f));
                     }
 
                     DebugView.EndCustomDraw();

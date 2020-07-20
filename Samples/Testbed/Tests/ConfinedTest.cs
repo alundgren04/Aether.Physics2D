@@ -129,7 +129,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             //	CreateCircle();
             //}
 
-            base.Update(settings, gameTime);
+            base.Update(settings, elapsedSeconds);
 
             foreach (Body b in World.BodyList)
             {
