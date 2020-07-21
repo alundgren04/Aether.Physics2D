@@ -157,7 +157,7 @@ namespace tainicom.Aether.Physics2D.Common.PolygonManipulation
             List<Vector2> exitPoints = new List<Vector2>();
 
             //We don't support cutting when the start or end is inside a shape.
-            if (world.TestPoint(start) != null || world.TestPoint(end) != null)
+            if (world.FindFixture(start) != null || world.FindFixture(end) != null)
                 return false;
 
             //Get the entry points

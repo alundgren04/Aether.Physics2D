@@ -436,7 +436,8 @@ namespace tainicom.Aether.Physics2D.Common
     {
         internal static World Deserialize(Stream stream)
         {
-            World world = new World(Vector2.Zero);
+            World world = new World();
+            world.Gravity = Vector2.Zero;
             Deserialize(world, stream);
             return world;
         }

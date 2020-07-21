@@ -49,7 +49,7 @@ namespace Helio.Physics.Compatibility.MonoGame
             if (_fixedMouseJoint != null)
                 return;
 
-            Fixture fixture = World.TestPoint(p);
+            Fixture fixture = World.FindFixture(p);
 
             if (fixture != null)
             {

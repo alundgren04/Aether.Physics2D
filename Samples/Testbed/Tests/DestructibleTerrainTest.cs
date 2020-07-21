@@ -25,7 +25,8 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
         private DestructibleTerrainTest()
         {
-            World = new World(new Vector2(0, -10));
+            World = new World();
+            World.Gravity = new Vector2(0, -10);
 
             _terrainArea = new AABB(new Vector2(0, 0), 100, 100);
             _terrain = new Terrain(World, _terrainArea)

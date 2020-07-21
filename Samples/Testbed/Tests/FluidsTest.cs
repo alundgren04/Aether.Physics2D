@@ -27,7 +27,8 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
 
         private FluidsTest()
         {
-            World = new World(new Vector2(0f, -10f));
+            World = new World();
+            World.Gravity = new Vector2(0f, -10f);
 
             Random random = new Random();
 

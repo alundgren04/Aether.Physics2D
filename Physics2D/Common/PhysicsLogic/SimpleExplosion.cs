@@ -44,7 +44,7 @@ namespace tainicom.Aether.Physics2D.Common.PhysicsLogic
             aabb.UpperBound = pos + new Vector2(radius);
 
             // Query the world for bodies within the radius.
-            World.FindFixturesInAABB(fixture =>
+            World.FindFixtures(fixture =>
             {
                 if (Vector2.Distance(fixture.Body.Position, pos) <= radius)
                 {

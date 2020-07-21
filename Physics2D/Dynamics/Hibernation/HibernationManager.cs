@@ -473,7 +473,7 @@ namespace tainicom.Aether.Physics2D.Dynamics.Hibernation
                 var independentActiveArea = independentActiveAreas[i];
 
                 // find all bodies which collide with active area AABB.
-                var bodiesInActiveArea = this.ActiveWorld.FindBodiesInAABB(ref independentActiveArea.AABB);
+                var bodiesInActiveArea = this.ActiveWorld.FindBodies(ref independentActiveArea.AABB);
 
                 // add all bodies which weren't already in AA
                 var independentActiveAreaBodies = independentActiveArea.AreaBodies.Select(b => b.Body).ToList();
@@ -500,7 +500,7 @@ namespace tainicom.Aether.Physics2D.Dynamics.Hibernation
             foreach (var activeArea in this.ActiveAreas)
             {
                 // get all hibernated bodies in its aabb
-                var hibernatedBodiesInActiveArea = this.HibernatedWorld.FindBodiesInAABB(ref activeArea.AABB);
+                var hibernatedBodiesInActiveArea = this.HibernatedWorld.FindBodies(ref activeArea.AABB);
 
                 // wake them
                 foreach (var hibernatedBody in hibernatedBodiesInActiveArea)

@@ -25,8 +25,8 @@ namespace tainicom.Aether.Physics2D.Controllers
         public Vector2 Center { get; private set; }
         public List<RangeLimit> RangeLimits { get; private set; }
 
-        private AABB _container;
-        public AABB Container { get { return _container; } }
+        private AABB _boundingBox;
+        public AABB BoundingBox { get { return _boundingBox; } }
 
         /// <summary>
         /// A circular controller affects any body within "range" of its center. It must have at least one range, otherwise it would have no effect.
@@ -54,13 +54,13 @@ namespace tainicom.Aether.Physics2D.Controllers
 
             // use outermost range to make bounding box
             var maxDiameter = this.RangeLimits[0].Distance * 2.0f;
-            this._container = new AABB(center, maxDiameter, maxDiameter);
+            this._boundingBox = new AABB(center, maxDiameter, maxDiameter);
         }
 
         public override void Update(float secondsElapsed)
         {
             // Find all bodies within the bounding rectangle (AABB).
-            var bodies = World.FindBodiesInAABB(ref this._container);
+            var bodies = World.FindBodies(ref this._boundingBox);
 
             foreach (var body in bodies)
             {

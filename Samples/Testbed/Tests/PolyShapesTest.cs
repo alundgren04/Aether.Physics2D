@@ -285,7 +285,7 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Tests
             callback.Circle.ComputeAABB(out aabb, ref callback.Transform, 0);
 
             DebugView.BeginCustomDraw(ref GameInstance.Projection, ref GameInstance.View);
-            World.FindFixturesInAABB(callback.ReportFixture, ref aabb);
+            World.FindFixtures(callback.ReportFixture, ref aabb);
 
             Color color = ColorHelper.FromPercentages(0.4f, 0.7f, 0.8f);
             DebugView.DrawCircle(callback.Circle.Position, callback.Circle.Radius, color);

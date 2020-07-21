@@ -63,7 +63,8 @@ namespace tainicom.Aether.Physics2D.Samples.Testbed.Framework
 
         protected Test()
         {
-            World = new World(new Vector2(0.0f, -10.0f));
+            World = new World();
+            World.Gravity = new Vector2(0.0f, -10.0f);
 
             TextLine = 30;
 

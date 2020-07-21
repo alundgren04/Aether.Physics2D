@@ -74,7 +74,7 @@ namespace tainicom.Aether.Physics2D.Controllers
         public override void Update(float dt)
         {
             _uniqueBodies.Clear();
-            World.FindFixturesInAABB(fixture =>
+            World.FindFixtures(fixture =>
                 {
                     if (fixture.Body.BodyType == BodyType.Static || !fixture.Body.Awake)
                         return true;

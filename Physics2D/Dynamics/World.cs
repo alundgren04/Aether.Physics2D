@@ -107,10 +107,10 @@ namespace tainicom.Aether.Physics2D.Dynamics
         /// </summary>
         public bool AutoAssignMissingBodyIds = true;
 
-        public Body GetBodyById(int id)
+        public Body GetBodyById(int bodyId)
         {
             // TODO: store bodies in a dictionary instead.
-            return this.BodyList.FirstOrDefault(b => b.Id == id);
+            return this.BodyList.FirstOrDefault(b => b.Id == bodyId);
         }
 
         #endregion
@@ -197,6 +197,8 @@ namespace tainicom.Aether.Physics2D.Dynamics
 
         /// <summary>
         /// Initializes a new instance of the <see cref="World"/> class.
+        /// 
+        /// Defaults gravity to Earth's surface: -9.80665f (9.8m/s^2). You may change this via the Gravity property.
         /// </summary>
         public World()
         {
@@ -226,14 +228,14 @@ namespace tainicom.Aether.Physics2D.Dynamics
             Gravity = new Vector2(0f, -9.80665f);
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="World"/> class.
-        /// </summary>
-        /// <param name="gravity">The gravity.</param>
-        public World(Vector2 gravity) : this()
-        {
-            Gravity = gravity;
-        }
+        ///// <summary>
+        ///// Initializes a new instance of the <see cref="World"/> class.
+        ///// </summary>
+        ///// <param name="gravity">The gravity.</param>
+        //public World(Vector2 gravity) : this()
+        //{
+        //    Gravity = gravity;
+        //}
 
         /// <summary>
         /// Initializes a new instance of the <see cref="World"/> class.
@@ -1697,7 +1699,7 @@ namespace tainicom.Aether.Physics2D.Dynamics
         /// </summary>
         /// <param name="callback">A user implemented callback class.</param>
         /// <param name="aabb">The aabb query box.</param>
-        public void FindFixturesInAABB(Func<Fixture, bool> callback, ref AABB aabb)//, bool optimizeByActiveAreas = true)
+        public void FindFixtures(Func<Fixture, bool> callback, ref AABB aabb)//, bool optimizeByActiveAreas = true)
         {
             //if( !this.HibernationEnabled )
             //{
@@ -1739,17 +1741,55 @@ namespace tainicom.Aether.Physics2D.Dynamics
         /// </summary>
         /// <param name="aabb">The aabb query box.</param>
         /// <returns>A list of fixtures that were in the affected area.</returns>
-        public List<Fixture> FindFixturesInAABB(ref AABB aabb)
+        public List<Fixture> FindFixtures(ref AABB aabb)
         {
             List<Fixture> affected = new List<Fixture>();
 
-            FindFixturesInAABB(fixture =>
+            FindFixtures(fixture =>
                 {
                     affected.Add(fixture);
                     return true;
                 }, ref aabb);
 
             return affected;
+        }
+
+        public Fixture FindFixture(Vector2 point)
+        {
+            AABB aabb;
+            Vector2 d = new Vector2(Settings.Epsilon, Settings.Epsilon);
+            aabb.LowerBound = point - d;
+            aabb.UpperBound = point + d;
+
+            _myFixture = null;
+            _point1 = point;
+
+            // Query the world for overlapping shapes.
+            FindFixtures(TestPointCallback, ref aabb);
+
+            return _myFixture;
+        }
+
+        /// <summary>
+        /// Returns a list of fixtures that are at the specified point.
+        /// With typical collision, there would only be one fixture at any given point. They could overlap if using non-colliding fixtures, etc.
+        /// </summary>
+        /// <param name="point">The point.</param>
+        /// <returns></returns>
+        public List<Fixture> FindFixtures(Vector2 point)
+        {
+            AABB aabb;
+            Vector2 d = new Vector2(Settings.Epsilon, Settings.Epsilon);
+            aabb.LowerBound = point - d;
+            aabb.UpperBound = point + d;
+
+            _point2 = point;
+            _testPointAllFixtures = new List<Fixture>();
+
+            // Query the world for overlapping shapes.
+            FindFixtures(TestPointAllCallback, ref aabb);
+
+            return _testPointAllFixtures;
         }
 
         /// <summary>
@@ -1759,7 +1799,7 @@ namespace tainicom.Aether.Physics2D.Dynamics
         /// </summary>
         /// <param name="aabb">The aabb query box.</param>
         /// <returns>A list of bodies that were in the affected area.</returns>
-        public List<Body> FindBodiesInAABB(ref AABB aabb)
+        public List<Body> FindBodies(ref AABB aabb)
         {
             var matches = new List<Body>();
 
@@ -1868,22 +1908,6 @@ namespace tainicom.Aether.Physics2D.Dynamics
                 ControllerRemoved(this, controller);
         }
 
-        public Fixture TestPoint(Vector2 point)
-        {
-            AABB aabb;
-            Vector2 d = new Vector2(Settings.Epsilon, Settings.Epsilon);
-            aabb.LowerBound = point - d;
-            aabb.UpperBound = point + d;
-
-            _myFixture = null;
-            _point1 = point;
-
-            // Query the world for overlapping shapes.
-            FindFixturesInAABB(TestPointCallback, ref aabb);
-
-            return _myFixture;
-        }
-
         private bool TestPointCallback(Fixture fixture)
         {
             bool inside = fixture.TestPoint(ref _point1);
@@ -1895,27 +1919,6 @@ namespace tainicom.Aether.Physics2D.Dynamics
 
             // Continue the query.
             return true;
-        }
-
-        /// <summary>
-        /// Returns a list of fixtures that are at the specified point.
-        /// </summary>
-        /// <param name="point">The point.</param>
-        /// <returns></returns>
-        public List<Fixture> TestPointAll(Vector2 point)
-        {
-            AABB aabb;
-            Vector2 d = new Vector2(Settings.Epsilon, Settings.Epsilon);
-            aabb.LowerBound = point - d;
-            aabb.UpperBound = point + d;
-
-            _point2 = point;
-            _testPointAllFixtures = new List<Fixture>();
-
-            // Query the world for overlapping shapes.
-            FindFixturesInAABB(TestPointAllCallback, ref aabb);
-
-            return _testPointAllFixtures;
         }
 
         private bool TestPointAllCallback(Fixture fixture)
