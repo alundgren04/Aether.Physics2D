@@ -3,4 +3,3 @@ C:\Users\alund\Documents\GitHub\AetherX\Helio.Physics.Diagnostics\bin\Debug\Heli
 C:\Users\alund\Documents\GitHub\AetherX\Helio.Physics.Diagnostics\obj\Debug\Helio.Physics.Diagnostics.csproj.CoreCompileInputs.cache
 C:\Users\alund\Documents\GitHub\AetherX\Helio.Physics.Diagnostics\obj\Debug\Helio.Physics.Diagnostics.dll
 C:\Users\alund\Documents\GitHub\AetherX\Helio.Physics.Diagnostics\obj\Debug\Helio.Physics.Diagnostics.pdb
-C:\Users\alund\Documents\GitHub\AetherX\Helio.Physics.Diagnostics\obj\Debug\Helio.Physics.Diagnostics.csprojAssemblyReference.cache

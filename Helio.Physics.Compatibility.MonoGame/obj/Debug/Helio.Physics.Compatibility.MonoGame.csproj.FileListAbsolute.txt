@@ -1,5 +1,3 @@
-C:\Users\alund\Documents\GitHub\AetherX\Helio.Physics.Compatibility.MonoGame\obj\Debug\Helio.Physics.Compatibility.MonoGame.csprojAssemblyReference.cache
-C:\Users\alund\Documents\GitHub\AetherX\Helio.Physics.Compatibility.MonoGame\obj\Debug\Helio.Physics.Compatibility.MonoGame.csproj.CoreCompileInputs.cache
 C:\Users\alund\Documents\GitHub\AetherX\Helio.Physics.Compatibility.MonoGame\bin\Debug\Helio.Physics.Compatibility.MonoGame.dll
 C:\Users\alund\Documents\GitHub\AetherX\Helio.Physics.Compatibility.MonoGame\bin\Debug\Helio.Physics.Compatibility.MonoGame.pdb
 C:\Users\alund\Documents\GitHub\AetherX\Helio.Physics.Compatibility.MonoGame\bin\Debug\Aether.Physics2D.dll
@@ -7,6 +5,8 @@ C:\Users\alund\Documents\GitHub\AetherX\Helio.Physics.Compatibility.MonoGame\bin
 C:\Users\alund\Documents\GitHub\AetherX\Helio.Physics.Compatibility.MonoGame\bin\Debug\Newtonsoft.Json.dll
 C:\Users\alund\Documents\GitHub\AetherX\Helio.Physics.Compatibility.MonoGame\bin\Debug\Aether.Physics2D.pdb
 C:\Users\alund\Documents\GitHub\AetherX\Helio.Physics.Compatibility.MonoGame\bin\Debug\Newtonsoft.Json.xml
+C:\Users\alund\Documents\GitHub\AetherX\Helio.Physics.Compatibility.MonoGame\obj\Debug\Helio.Physics.Compatibility.MonoGame.csprojAssemblyReference.cache
+C:\Users\alund\Documents\GitHub\AetherX\Helio.Physics.Compatibility.MonoGame\obj\Debug\Helio.Physics.Compatibility.MonoGame.csproj.CoreCompileInputs.cache
 C:\Users\alund\Documents\GitHub\AetherX\Helio.Physics.Compatibility.MonoGame\obj\Debug\Helio.Physics.Compatibility.MonoGame.csproj.CopyComplete
 C:\Users\alund\Documents\GitHub\AetherX\Helio.Physics.Compatibility.MonoGame\obj\Debug\Helio.Physics.Compatibility.MonoGame.dll
 C:\Users\alund\Documents\GitHub\AetherX\Helio.Physics.Compatibility.MonoGame\obj\Debug\Helio.Physics.Compatibility.MonoGame.pdb

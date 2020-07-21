@@ -1,0 +1,7 @@
+C:\Users\alund\Documents\GitHub\AetherX\MonoGame.PhysicsDemos\bin\Debug\MonoGame.PhysicsDemos.exe.config
+C:\Users\alund\Documents\GitHub\AetherX\MonoGame.PhysicsDemos\bin\Debug\MonoGame.PhysicsDemos.exe
+C:\Users\alund\Documents\GitHub\AetherX\MonoGame.PhysicsDemos\bin\Debug\MonoGame.PhysicsDemos.pdb
+C:\Users\alund\Documents\GitHub\AetherX\MonoGame.PhysicsDemos\obj\Debug\MonoGame.PhysicsDemos.csprojAssemblyReference.cache
+C:\Users\alund\Documents\GitHub\AetherX\MonoGame.PhysicsDemos\obj\Debug\MonoGame.PhysicsDemos.csproj.CoreCompileInputs.cache
+C:\Users\alund\Documents\GitHub\AetherX\MonoGame.PhysicsDemos\obj\Debug\MonoGame.PhysicsDemos.exe
+C:\Users\alund\Documents\GitHub\AetherX\MonoGame.PhysicsDemos\obj\Debug\MonoGame.PhysicsDemos.pdb

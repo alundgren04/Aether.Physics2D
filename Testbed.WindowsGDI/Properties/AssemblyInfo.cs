@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Helio.Physics.Diagnostics.MonoGame")]
+[assembly: AssemblyTitle("Testbed.WindowsGDI")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Helio.Physics.Diagnostics.MonoGame")]
+[assembly: AssemblyProduct("Testbed.WindowsGDI")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("e0155c34-3bb6-480e-aa4c-1c7da0a05bce")]
+[assembly: Guid("8978aea2-d0a4-47f8-8541-6fe00b6f27c4")]
 
 // Version information for an assembly consists of the following four values:
 //

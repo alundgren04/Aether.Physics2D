@@ -1,0 +1,6 @@
+C:\Users\alund\Documents\GitHub\AetherX\Testbed.Unity\bin\Debug\Testbed.Unity.exe.config
+C:\Users\alund\Documents\GitHub\AetherX\Testbed.Unity\bin\Debug\Testbed.Unity.exe
+C:\Users\alund\Documents\GitHub\AetherX\Testbed.Unity\bin\Debug\Testbed.Unity.pdb
+C:\Users\alund\Documents\GitHub\AetherX\Testbed.Unity\obj\Debug\Unity.PhysicsDemos.csproj.CoreCompileInputs.cache
+C:\Users\alund\Documents\GitHub\AetherX\Testbed.Unity\obj\Debug\Testbed.Unity.exe
+C:\Users\alund\Documents\GitHub\AetherX\Testbed.Unity\obj\Debug\Testbed.Unity.pdb

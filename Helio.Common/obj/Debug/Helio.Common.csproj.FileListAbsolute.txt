@@ -1,6 +1,5 @@
 C:\Users\alund\Documents\GitHub\AetherX\Helio.Common\bin\Debug\Helio.Common.dll
 C:\Users\alund\Documents\GitHub\AetherX\Helio.Common\bin\Debug\Helio.Common.pdb
-C:\Users\alund\Documents\GitHub\AetherX\Helio.Common\obj\Debug\Helio.Common.csprojAssemblyReference.cache
 C:\Users\alund\Documents\GitHub\AetherX\Helio.Common\obj\Debug\Helio.Common.csproj.CoreCompileInputs.cache
 C:\Users\alund\Documents\GitHub\AetherX\Helio.Common\obj\Debug\Helio.Common.dll
 C:\Users\alund\Documents\GitHub\AetherX\Helio.Common\obj\Debug\Helio.Common.pdb
